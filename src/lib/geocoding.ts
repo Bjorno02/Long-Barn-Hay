@@ -39,7 +39,6 @@ export async function geocodeAddress(address: string): Promise<GeocodingResult> 
 
   const normalizedAddress = address.toLowerCase();
 
-  // Stub: simulate geocoding based on state
   if (normalizedAddress.includes('nh') || normalizedAddress.includes('new hampshire')) {
     return {
       success: true,

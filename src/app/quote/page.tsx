@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { QuoteForm } from '@/components/forms';
 import { siteConfig } from '@/lib/siteConfig';
 
@@ -9,56 +10,62 @@ export const metadata: Metadata = {
 export default function QuotePage(): JSX.Element {
   return (
     <>
-      {/* Header: Red with chrome accents */}
-      <section className="relative bg-barn-600 text-white pt-16 pb-40 overflow-hidden">
-        {/* Chrome geometric shapes */}
-        <div className="absolute top-0 right-0 w-96 h-96 -translate-y-1/2 translate-x-1/3">
-          <div className="absolute inset-0 rounded-full bg-chrome-gradient opacity-10" />
-          <div className="absolute inset-4 rounded-full bg-chrome-gradient opacity-5" />
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/photos/2ndCut.jpg"
+            alt="Quality Hay"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-barn-900/80 via-barn-900/60 to-barn-900/90" />
         </div>
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-chrome-dark opacity-10 rotate-45" />
-        
-        {/* Chrome accent line */}
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-        
-        <div className="relative max-w-6xl mx-auto px-6">
-          <div className="chrome-pill-dark inline-block mb-4">Get Started</div>
-          <h1 className="text-5xl font-bold mb-3">Request a Quote</h1>
-          <p className="text-barn-100 max-w-xl text-lg">
+
+        {/* Chrome accent */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-chrome-gradient" />
+
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-6 py-32 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-white" />
+            Get Started
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Request a Quote</h1>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             {siteConfig.disclaimers.pricing}
           </p>
         </div>
       </section>
 
-      {/* Form: Overlapping with chrome frame */}
-      <section className="relative -mt-24 pb-24 bg-steel-100">
+      {/* Form Section */}
+      <section className="relative bg-steel-100 py-16">
         <div className="max-w-2xl mx-auto px-6">
-          {/* Chrome connecting line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-24 bg-gradient-to-b from-white/40 to-transparent" />
-          
-          {/* Chrome outer frame */}
-          <div className="relative">
-            <div className="absolute -inset-[3px] rounded-2xl bg-chrome-gradient opacity-60" />
+          {/* Form with chrome frame */}
+          <div className="relative -mt-24">
+            <div className="absolute -inset-1 rounded-2xl bg-chrome-gradient" />
             <div className="relative">
               <QuoteForm />
             </div>
           </div>
           
-          {/* Trust indicators with chrome pills */}
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <div className="chrome-pill flex items-center gap-2">
+          {/* Trust indicators */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
               <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               1-2 day response
             </div>
-            <div className="chrome-pill flex items-center gap-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
               <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               No obligation
             </div>
-            <div className="chrome-pill flex items-center gap-2">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
               <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>

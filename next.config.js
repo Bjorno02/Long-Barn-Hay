@@ -17,7 +17,6 @@ const nextConfig = {
     },
   },
   
-  // Security headers for production
   async headers() {
     return [
       {
