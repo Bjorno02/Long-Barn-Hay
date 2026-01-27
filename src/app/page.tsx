@@ -1,334 +1,462 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { siteConfig } from '@/lib/siteConfig';
 
+const heroSlides = [
+  { src: '/photos/1stCut.jpg', alt: '1st Cut Hay Field' },
+  { src: '/photos/2ndCut.jpg', alt: '2nd Cut Hay' },
+  { src: '/photos/RoundBales.jpg', alt: 'Round Hay Bales' },
+];
+
+const galleryImages = [
+  { src: '/photos/1stCut.jpg', alt: '1st Cut Hay' },
+  { src: '/photos/2ndCut.jpg', alt: '2nd Cut Hay' },
+  { src: '/photos/RoundBales.jpg', alt: 'Round Bales' },
+  { src: '/photos/LongBarnWorker.jpg', alt: 'Long Barn Worker' },
+  { src: '/photos/LongBarnDeer.jpg', alt: 'Long Barn Deer' },
+];
+
 export default function HomePage(): JSX.Element {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [galleryOffset, setGalleryOffset] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 6000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  useEffect(() => {
+    if (isHovered) return;
+    
+    const timer = setInterval(() => {
+      setGalleryOffset((prev) => prev + 0.5);
+    }, 30);
+    
+    return () => clearInterval(timer);
+  }, [isHovered]);
+
+  const scrollGallery = (direction: 'left' | 'right') => {
+    if (direction === 'left') {
+      setGalleryOffset((prev) => prev - 200);
+    } else {
+      setGalleryOffset((prev) => prev + 200);
+    }
+  };
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[95vh] overflow-hidden bg-steel-100">
-        <div className="absolute top-0 left-0 w-[70%] h-[85%] bg-barn-600">
-          <div className="absolute top-0 right-0 bottom-0 w-[6px] bg-chrome-gradient" />
-        </div>
-        
-        <div className="absolute bottom-0 right-0 w-[55%] h-[60%] bg-steel-800">
-          <div className="absolute top-0 left-0 right-0 h-[6px] bg-chrome-gradient" />
-          <div className="absolute top-0 left-0 bottom-0 w-[6px] bg-chrome-gradient" />
-        </div>
-        
-        <div className="absolute top-[15%] right-[8%] w-32 h-32 chrome-surface shadow-deep" />
+      {/* Hero Section - Full Screen with Carousel */}
+      <section className="relative h-screen min-h-[600px] overflow-hidden">
+        {/* Background Carousel */}
+        {heroSlides.map((slide, index) => (
+          <div
+            key={slide.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
 
-        <div className="relative max-w-7xl mx-auto px-6 min-h-[95vh] flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full py-16">
-            <div className="lg:col-span-5 z-10">
-              <div className="relative w-28 h-28 mb-8">
-                <div className="absolute -inset-[4px] rounded-full bg-chrome-gradient" />
-                <div className="absolute inset-0 rounded-full bg-white shadow-deep overflow-hidden">
-                  <Image
-                    src="/photos/LongBarnLogo.jpg"
-                    alt="Long Barn Hay"
-                    fill
-                    className="object-contain p-3"
-                  />
-                </div>
+        {/* Overlay Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-steel-900/70 via-steel-900/40 to-steel-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-barn-900/30 to-transparent" />
+
+        {/* Chrome accent at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-chrome-gradient" />
+
+        {/* Content */}
+        <div className="relative h-full flex flex-col justify-center items-center text-center px-6 pb-16">
+          {/* Logo */}
+          <div className="relative w-24 h-24 mb-8">
+            <div className="absolute -inset-1 rounded-full bg-chrome-gradient animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-white shadow-deep overflow-hidden">
+              <Image
+                src="/photos/LongBarnLogo.jpg"
+                alt="Long Barn Hay"
+                fill
+                className="object-contain p-2"
+              />
+            </div>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
+            Long Barn Hay
+          </h1>
+
+          {/* Tagline */}
+          <p className="text-xl md:text-2xl text-white/90 mb-4 max-w-2xl">
+            Premium 1st and 2nd cut hay from Chester, NH
+          </p>
+
+          {/* Sub info */}
+          <div className="flex flex-wrap justify-center gap-4 mb-10 text-white/70">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-barn-500" />
+              {siteConfig.radiusMiles} Mile Delivery
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-chrome-400" />
+              {siteConfig.deliveryLeadTimeDays} Day Lead Time
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-steel-400" />
+              Pickup Available
+            </span>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/quote"
+              className="chrome-red px-10 py-4 rounded-full text-lg font-semibold hover:shadow-red-glow transition-all"
+            >
+              Get a Quote
+            </Link>
+            <Link
+              href="/delivery"
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all"
+            >
+              Check Delivery Range
+            </Link>
+          </div>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentSlide ? 'w-10 bg-white' : 'w-4 bg-white/40'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Gallery Strip - Infinite Scroll */}
+      <section 
+        className="relative bg-steel-900 py-20 overflow-hidden"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-chrome-400/30 to-transparent" />
+        
+        {/* Gallery Controls */}
+        <button
+          onClick={() => scrollGallery('left')}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full chrome-surface flex items-center justify-center hover:scale-110 transition-transform shadow-deep"
+          aria-label="Scroll left"
+        >
+          <svg className="w-6 h-6 text-steel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button
+          onClick={() => scrollGallery('right')}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full chrome-surface flex items-center justify-center hover:scale-110 transition-transform shadow-deep"
+          aria-label="Scroll right"
+        >
+          <svg className="w-6 h-6 text-steel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <div className="overflow-hidden">
+          <div 
+            className="flex gap-6"
+            style={{ transform: `translateX(-${galleryOffset % (galleryImages.length * 420)}px)` }}
+          >
+            {[...galleryImages, ...galleryImages, ...galleryImages].map((img, index) => (
+              <div 
+                key={index}
+                className="flex-shrink-0 w-[400px] aspect-[3/2] relative rounded-2xl overflow-hidden group"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About / Intro Section */}
+      <section className="relative bg-steel-100 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Text Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-barn-600/10 text-barn-600 text-sm font-medium mb-6">
+                <span className="w-2 h-2 rounded-full bg-barn-500" />
+                About Our Hay
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-white">
-                Long Barn<br />Hay
-              </h1>
+              <h2 className="text-4xl lg:text-5xl font-bold text-steel-900 mb-6 leading-tight">
+                Quality Hay for<br />
+                <span className="text-barn-600">Every Need</span>
+              </h2>
               
-              <p className="text-xl text-white/90 mb-8 max-w-md">
-                Premium 1st and 2nd cut hay from Chester, NH.
+              <p className="text-lg text-steel-600 mb-8 leading-relaxed">
+                From small hobby farms to large-scale operations, we provide premium 1st and 2nd cut hay 
+                in a variety of bale formats. Our hay is harvested from local fields in Chester, NH 
+                and delivered within a {siteConfig.radiusMiles}-mile radius.
               </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <Link href="/quote" className="group relative">
-                  <div className="absolute -inset-[2px] rounded-lg bg-chrome-gradient" />
-                  <span className="relative bg-white text-barn-600 px-7 py-3.5 rounded-lg font-semibold inline-block hover:bg-steel-50 transition-colors">
-                    Get a Quote
-                  </span>
-                </Link>
-                <Link
-                  href="/delivery"
-                  className="chrome-surface-dark px-7 py-3.5 rounded-lg font-semibold text-white"
-                >
-                  Check Delivery
-                </Link>
-              </div>
-            </div>
 
-            <div className="lg:col-span-7 flex items-end lg:items-center justify-end z-10">
-              <div className="relative w-full max-w-md">
-                <div className="absolute -inset-[4px] rounded-2xl bg-chrome-gradient" />
-                
-                <div className="relative bg-white rounded-2xl p-8 shadow-deep">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-barn-500" />
-                    <div className="w-3 h-3 rounded-full bg-steel-400" />
-                    <div className="w-3 h-3 rounded-full chrome-surface" />
-                  </div>
-                  
-                  <h2 className="text-2xl font-bold text-steel-900 mb-5">Quick Info</h2>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 p-3 rounded-xl bg-steel-50">
-                      <div className="w-11 h-11 rounded-lg chrome-red flex items-center justify-center flex-shrink-0">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-steel-900">50 Mile Delivery</p>
-                        <p className="text-sm text-steel-500">From Chester, NH</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-3 rounded-xl bg-steel-50">
-                      <div className="w-11 h-11 rounded-lg chrome-surface-dark flex items-center justify-center flex-shrink-0">
-                        <svg className="w-5 h-5 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-steel-900">{siteConfig.deliveryLeadTimeDays} Day Lead Time</p>
-                        <p className="text-sm text-steel-500">Typical turnaround</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 p-3 rounded-xl bg-steel-50">
-                      <div className="w-11 h-11 rounded-lg chrome-surface flex items-center justify-center flex-shrink-0">
-                        <svg className="w-5 h-5 text-steel-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-steel-900">Pickup Available</p>
-                        <p className="text-sm text-steel-500">At our location</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="chrome-divider my-5" />
-                  
-                  <Link 
-                    href="/delivery" 
-                    className="text-barn-600 font-medium hover:text-barn-700 inline-flex items-center gap-2 text-sm"
-                  >
-                    Check your delivery range
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg chrome-red flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="h-2 chrome-surface" />
-
-      {/* Products */}
-      <section className="relative bg-steel-900 py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="chrome-pill inline-block mb-4">Our Products</div>
-            <h2 className="text-4xl font-bold text-white mb-3">Quality Hay</h2>
-            <p className="text-steel-400">Available in 1st and 2nd cut</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="group relative">
-              <div className="absolute -inset-[3px] rounded-2xl bg-chrome-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-steel-800 rounded-2xl overflow-hidden transition-transform group-hover:-translate-y-1">
-                <div className="aspect-[21/9] relative">
-                  <Image
-                    src="/photos/1stCut.jpg"
-                    alt="1st Cut Hay"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <div className="chrome-pill text-xs">First Harvest</div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-steel-900">Small Squares, Large Rounds, Large Squares</h3>
+                    <p className="text-steel-600 text-sm">Multiple bale formats to suit your operation</p>
                   </div>
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">1st Cut Hay</h3>
-                  <p className="text-steel-400 mb-4">
-                    {siteConfig.hayCuts[0]?.description}
-                  </p>
-                  
-                  <Link
-                    href="/quote"
-                    className="inline-flex items-center gap-2 text-sm font-medium chrome-button px-4 py-2 rounded-lg"
-                  >
-                    Get quote
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg chrome-surface-dark flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative">
-              <div className="absolute -inset-[3px] rounded-2xl bg-gradient-to-br from-barn-400 via-barn-500 to-barn-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative bg-barn-600 rounded-2xl overflow-hidden transition-transform group-hover:-translate-y-1">
-                <div className="aspect-[21/9] relative">
-                  <Image
-                    src="/photos/2ndCut.jpg"
-                    alt="2nd Cut Hay"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <div className="chrome-pill text-xs">Second Harvest</div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-steel-900">1st and 2nd Cut Available</h3>
+                    <p className="text-steel-600 text-sm">Choose based on your animals' nutritional needs</p>
                   </div>
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">2nd Cut Hay</h3>
-                  <p className="text-barn-100 mb-4">
-                    {siteConfig.hayCuts[1]?.description}
-                  </p>
-                  
-                  <Link
-                    href="/quote"
-                    className="inline-flex items-center gap-2 text-sm font-medium chrome-button px-4 py-2 rounded-lg"
-                  >
-                    Get quote
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg chrome-surface flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-steel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                  </Link>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-steel-900">Flexible Quantities</h3>
+                    <p className="text-steel-600 text-sm">From small orders to large loads</p>
+                  </div>
                 </div>
               </div>
+
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 text-barn-600 font-semibold hover:text-barn-700 transition-colors"
+              >
+                View Our Products
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <div className="h-1 bg-chrome-horizontal" />
-
-      {/* Features */}
-      <section className="relative bg-steel-200 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
             <div className="relative">
-              <div className="absolute -inset-[4px] rounded-2xl bg-chrome-gradient" />
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <div className="absolute -inset-4 bg-barn-600 rounded-2xl -rotate-3" />
+              <div className="absolute -inset-4 chrome-surface rounded-2xl rotate-2" />
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-deep">
                 <Image
                   src="/photos/RoundBales.jpg"
-                  alt="Round hay bales"
+                  alt="Hay bales at Long Barn"
                   fill
                   className="object-cover"
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div>
-              <div className="chrome-pill inline-block mb-4">Why Choose Us</div>
-              <h2 className="text-4xl font-bold text-steel-900 mb-6">
-                Local Quality Hay
-              </h2>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded chrome-red flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+      {/* Feature Cards - Hay Cuts */}
+      <section className="relative bg-steel-900 py-24">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-chrome-gradient" />
+        
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-barn-500" />
+              Our Products
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">1st Cut vs 2nd Cut</h2>
+            <p className="text-steel-400 max-w-2xl mx-auto">
+              Understanding the difference helps you choose the right hay for your animals
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* 1st Cut Card */}
+            <div className="group relative">
+              <div className="absolute -inset-px rounded-2xl bg-chrome-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative bg-steel-800 rounded-2xl overflow-hidden">
+                <div className="aspect-[16/9] relative">
+                  <Image
+                    src="/photos/1stCut.jpg"
+                    alt="1st Cut Hay"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1.5 rounded-full bg-steel-900/80 text-white text-sm font-medium backdrop-blur-sm">
+                      First Harvest
+                    </span>
                   </div>
-                  <span className="text-steel-700">Small squares, large rounds, and large squares available</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded chrome-red flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-white mb-3">1st Cut Hay</h3>
+                  <p className="text-steel-400 mb-6">{siteConfig.hayCuts[0]?.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {siteConfig.hayCuts[0]?.characteristics.slice(0, 3).map((c, i) => (
+                      <li key={i} className="flex items-center gap-2 text-steel-300 text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-chrome-400" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/quote"
+                    className="inline-flex items-center gap-2 chrome-button px-5 py-2.5 rounded-lg text-sm font-medium"
+                  >
+                    Request Quote
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* 2nd Cut Card */}
+            <div className="group relative">
+              <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-barn-400 to-barn-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative bg-barn-600 rounded-2xl overflow-hidden">
+                <div className="aspect-[16/9] relative">
+                  <Image
+                    src="/photos/2ndCut.jpg"
+                    alt="2nd Cut Hay"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1.5 rounded-full bg-barn-900/80 text-white text-sm font-medium backdrop-blur-sm">
+                      Second Harvest
+                    </span>
                   </div>
-                  <span className="text-steel-700">Delivery within {siteConfig.radiusMiles} miles of Chester, NH</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded chrome-red flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-white mb-3">2nd Cut Hay</h3>
+                  <p className="text-barn-100 mb-6">{siteConfig.hayCuts[1]?.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {siteConfig.hayCuts[1]?.characteristics.slice(0, 3).map((c, i) => (
+                      <li key={i} className="flex items-center gap-2 text-barn-100 text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/quote"
+                    className="inline-flex items-center gap-2 chrome-button px-5 py-2.5 rounded-lg text-sm font-medium"
+                  >
+                    Request Quote
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </div>
-                  <span className="text-steel-700">Pickup option available at our location</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded chrome-red flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-steel-700">Flexible quantities from small to large orders</span>
-                </li>
-              </ul>
-              <Link
-                href="/quote"
-                className="chrome-red px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 hover:shadow-red-glow transition-shadow"
-              >
-                Request a Quote
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden py-24 bg-steel-900">
-        <div className="relative max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="chrome-pill inline-block mb-6">Get Started</div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                Ready to order?
-              </h2>
-              <p className="text-steel-400 text-lg mb-8 max-w-md">
-                {siteConfig.disclaimers.pricing} We respond within 1-2 business days.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/quote"
-                  className="chrome-red px-8 py-4 rounded-lg font-medium hover:shadow-red-glow transition-shadow"
-                >
-                  Request a Quote
-                </Link>
-                <Link
-                  href="/contact"
-                  className="chrome-button px-8 py-4 rounded-lg"
-                >
-                  Contact Us
-                </Link>
-              </div>
+      {/* Service Info Strip */}
+      <section className="relative">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="chrome-surface p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-steel-200 flex items-center justify-center">
+              <svg className="w-7 h-7 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
             </div>
-            
-            <div className="hidden lg:flex justify-end">
-              <div className="relative w-64 h-64">
-                <div className="absolute inset-0 rounded-full bg-barn-600" />
-                <div className="absolute inset-4 rounded-full chrome-surface" />
-                <div className="absolute inset-8 rounded-full bg-steel-800" />
-                <div className="absolute inset-12 rounded-full chrome-surface-dark flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white">50</span>
-                </div>
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 chrome-pill text-xs">
-                  mile radius
-                </div>
-              </div>
+            <h3 className="font-bold text-steel-900 text-lg mb-1">{siteConfig.radiusMiles} Mile Radius</h3>
+            <p className="text-steel-600 text-sm">Delivery from {siteConfig.address.city}, {siteConfig.address.state}</p>
+          </div>
+          <div className="chrome-red p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
+            <h3 className="font-bold text-white text-lg mb-1">{siteConfig.deliveryLeadTimeDays} Day Lead Time</h3>
+            <p className="text-white/80 text-sm">Typical delivery turnaround</p>
+          </div>
+          <div className="chrome-surface-dark p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/10 flex items-center justify-center">
+              <svg className="w-7 h-7 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-white text-lg mb-1">Pickup Available</h3>
+            <p className="text-steel-400 text-sm">At our Chester, NH location</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative bg-steel-100 py-24">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl lg:text-5xl font-bold text-steel-900 mb-6">
+            Ready to Order?
+          </h2>
+          <p className="text-lg text-steel-600 mb-10 max-w-2xl mx-auto">
+            {siteConfig.disclaimers.pricing} Get in touch for a personalized quote.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/quote"
+              className="chrome-red px-10 py-4 rounded-full text-lg font-semibold hover:shadow-red-glow transition-all inline-flex items-center justify-center gap-2"
+            >
+              Request a Quote
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              href="/contact"
+              className="chrome-button px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
 
       {/* BeSide */}
-      <section className="relative h-16 chrome-surface-dark">
-        <div className="absolute inset-x-0 top-0 chrome-line" />
-        <div className="absolute inset-x-0 bottom-0 chrome-line" />
+      <section className="relative h-14 chrome-surface-dark">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         <div className="relative h-full flex items-center justify-center">
           <span className="text-steel-500 text-xs tracking-widest uppercase">BeSide — internal process tool</span>
         </div>

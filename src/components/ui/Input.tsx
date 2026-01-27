@@ -17,7 +17,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const hasError = Boolean(error);
     const hasHint = Boolean(hint);
 
-    // Build aria-describedby based on what's present
     const describedBy = [
       hasError && errorId,
       hasHint && hintId,
