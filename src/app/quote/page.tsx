@@ -41,11 +41,12 @@ export default function QuotePage(): JSX.Element {
       </section>
 
       {/* Form Section */}
-      <section className="relative bg-steel-100 py-16">
+      <section className="relative earth-surface py-16">
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-2xl mx-auto px-6">
           {/* Form with chrome frame */}
           <div className="relative -mt-24">
-            <div className="absolute -inset-1 rounded-2xl bg-chrome-gradient" />
+            <div className="absolute -inset-1 rounded-2xl bg-hay-400" />
             <div className="relative">
               <QuoteForm />
             </div>
@@ -53,20 +54,20 @@ export default function QuotePage(): JSX.Element {
           
           {/* Trust indicators */}
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
-              <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="hay-pill inline-flex items-center gap-2">
+              <svg className="w-4 h-4 text-hay-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               1-2 day response
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
-              <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="sage-pill inline-flex items-center gap-2">
+              <svg className="w-4 h-4 text-sage-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               No obligation
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-chrome text-steel-700 text-sm">
-              <svg className="w-4 h-4 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="earth-pill inline-flex items-center gap-2">
+              <svg className="w-4 h-4 text-earth-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
               Local to Chester, NH

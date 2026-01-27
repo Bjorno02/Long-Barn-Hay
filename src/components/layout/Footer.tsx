@@ -5,8 +5,8 @@ import { siteConfig } from '@/lib/siteConfig';
 export function Footer(): JSX.Element {
   return (
     <footer className="relative">
-      {/* Chrome top accent */}
-      <div className="h-1 bg-chrome-gradient" />
+      {/* Earth tone top accent */}
+      <div className="earth-divider" />
       
       <div className="bg-steel-900">
         <div className="max-w-7xl mx-auto px-6 py-16">
@@ -92,7 +92,7 @@ export function Footer(): JSX.Element {
                 &copy; {new Date().getFullYear()} {siteConfig.companyName}. All rights reserved.
               </p>
               <div className="flex items-center gap-2 text-steel-600 text-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-barn-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-hay-500" />
                 <span>Chester, NH</span>
               </div>
             </div>

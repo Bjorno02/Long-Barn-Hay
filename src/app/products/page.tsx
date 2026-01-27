@@ -42,14 +42,15 @@ export default function ProductsPage(): JSX.Element {
       </section>
 
       {/* Hay Cuts Section */}
-      <section className="bg-steel-100 py-24">
+      <section className="earth-surface py-24">
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-barn-600/10 text-barn-600 text-sm font-medium mb-4">
-              <span className="w-2 h-2 rounded-full bg-barn-500" />
+            <div className="hay-pill inline-flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-hay-600" />
               Hay Types
             </div>
-            <h2 className="text-3xl font-bold text-steel-900">1st Cut vs 2nd Cut</h2>
+            <h2 className="text-3xl font-bold text-earth-900">1st Cut vs 2nd Cut</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -72,15 +73,15 @@ export default function ProductsPage(): JSX.Element {
                   </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-steel-900 mb-3">1st Cut Hay</h3>
-                  <p className="text-steel-600 mb-6">{siteConfig.hayCuts[0]?.description}</p>
+                  <h3 className="text-2xl font-bold text-earth-900 mb-3">1st Cut Hay</h3>
+                  <p className="text-earth-700 mb-6">{siteConfig.hayCuts[0]?.description}</p>
                   
-                  <h4 className="font-semibold text-steel-900 mb-3">Characteristics</h4>
+                  <h4 className="font-semibold text-earth-900 mb-3">Characteristics</h4>
                   <ul className="space-y-2 mb-8">
                     {siteConfig.hayCuts[0]?.characteristics.map((c, i) => (
-                      <li key={i} className="flex items-start gap-3 text-steel-600">
-                        <span className="w-5 h-5 rounded-full chrome-surface flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-steel-400" />
+                      <li key={i} className="flex items-start gap-3 text-earth-700">
+                        <span className="w-5 h-5 rounded-full bg-hay-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-hay-600" />
                         </span>
                         {c}
                       </li>
@@ -171,44 +172,44 @@ export default function ProductsPage(): JSX.Element {
                 key={product.id}
                 className={`rounded-2xl p-8 text-center ${
                   index === 0 
-                    ? 'chrome-surface' 
+                    ? 'earth-surface-warm' 
                     : index === 1 
-                      ? 'chrome-red' 
-                      : 'chrome-surface-dark'
+                      ? 'hay-accent' 
+                      : 'sage-accent'
                 }`}
               >
                 <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
                   index === 0 
-                    ? 'bg-steel-200' 
+                    ? 'bg-earth-300' 
                     : index === 1 
                       ? 'bg-white/20' 
-                      : 'bg-white/10'
+                      : 'bg-white/15'
                 }`}>
                   {index === 0 && (
-                    <svg className="w-10 h-10 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-earth-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                   )}
                   {index === 1 && (
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-earth-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   )}
                   {index === 2 && (
-                    <svg className="w-10 h-10 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   )}
                 </div>
                 
                 <h3 className={`text-xl font-bold mb-2 ${
-                  index === 0 ? 'text-steel-900' : 'text-white'
+                  index === 0 ? 'text-earth-900' : index === 1 ? 'text-earth-900' : 'text-white'
                 }`}>
                   {product.name}
                 </h3>
                 
                 <p className={`text-sm mb-6 ${
-                  index === 0 ? 'text-steel-600' : index === 1 ? 'text-white/80' : 'text-steel-400'
+                  index === 0 ? 'text-earth-700' : index === 1 ? 'text-earth-800/80' : 'text-sage-100'
                 }`}>
                   {product.description}
                 </p>
@@ -218,11 +219,11 @@ export default function ProductsPage(): JSX.Element {
                     <li 
                       key={i}
                       className={`flex items-center justify-center gap-2 ${
-                        index === 0 ? 'text-steel-600' : index === 1 ? 'text-white/80' : 'text-steel-400'
+                        index === 0 ? 'text-earth-700' : index === 1 ? 'text-earth-800/80' : 'text-sage-100'
                       }`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full ${
-                        index === 0 ? 'bg-barn-500' : 'bg-white/50'
+                        index === 0 ? 'bg-hay-600' : index === 1 ? 'bg-earth-900/50' : 'bg-white/50'
                       }`} />
                       {feature}
                     </li>
@@ -235,10 +236,11 @@ export default function ProductsPage(): JSX.Element {
       </section>
 
       {/* Pricing Note */}
-      <section className="chrome-surface py-16">
+      <section className="earth-surface-warm py-16">
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold text-steel-900 mb-4">Pricing Information</h2>
-          <p className="text-steel-600 mb-8">
+          <h2 className="text-2xl font-bold text-earth-900 mb-4">Pricing Information</h2>
+          <p className="text-earth-700 mb-8">
             {siteConfig.disclaimers.pricing}
           </p>
           <Link

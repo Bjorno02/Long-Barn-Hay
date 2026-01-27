@@ -205,22 +205,23 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* About / Intro Section */}
-      <section className="relative bg-steel-100 py-24">
+      <section className="relative py-24" style={{ backgroundColor: '#FFDBBB' }}>
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-barn-600/10 text-barn-600 text-sm font-medium mb-6">
-                <span className="w-2 h-2 rounded-full bg-barn-500" />
+              <div className="inline-flex items-center gap-2 cream-pill mb-6">
+                <span className="w-2 h-2 rounded-full bg-forest-700" />
                 About Our Hay
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-bold text-steel-900 mb-6 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-forest-800 mb-6 leading-tight">
                 Quality Hay for<br />
                 <span className="text-barn-600">Every Need</span>
               </h2>
               
-              <p className="text-lg text-steel-600 mb-8 leading-relaxed">
+              <p className="text-lg text-earth-600 mb-8 leading-relaxed">
                 From small hobby farms to large-scale operations, we provide premium 1st and 2nd cut hay 
                 in a variety of bale formats. Our hay is harvested from local fields in Chester, NH 
                 and delivered within a {siteConfig.radiusMiles}-mile radius.
@@ -228,36 +229,36 @@ export default function HomePage(): JSX.Element {
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg chrome-red flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg earth-accent flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-steel-900">Small Squares, Large Rounds, Large Squares</h3>
-                    <p className="text-steel-600 text-sm">Multiple bale formats to suit your operation</p>
+                    <h3 className="font-semibold text-forest-800">Small Squares, Large Rounds, Large Squares</h3>
+                    <p className="text-earth-600 text-sm">Multiple bale formats to suit your operation</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg chrome-surface-dark flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-lg sage-accent flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-steel-900">1st and 2nd Cut Available</h3>
-                    <p className="text-steel-600 text-sm">Choose based on your animals' nutritional needs</p>
+                    <h3 className="font-semibold text-forest-800">1st and 2nd Cut Available</h3>
+                    <p className="text-earth-600 text-sm">Choose based on your animals' nutritional needs</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg chrome-surface flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-steel-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-lg forest-accent flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-steel-900">Flexible Quantities</h3>
-                    <p className="text-steel-600 text-sm">From small orders to large loads</p>
+                    <h3 className="font-semibold text-forest-800">Flexible Quantities</h3>
+                    <p className="text-earth-600 text-sm">From small orders to large loads</p>
                   </div>
                 </div>
               </div>
@@ -275,8 +276,8 @@ export default function HomePage(): JSX.Element {
 
             {/* Image */}
             <div className="relative">
-              <div className="absolute -inset-4 bg-barn-600 rounded-2xl -rotate-3" />
-              <div className="absolute -inset-4 chrome-surface rounded-2xl rotate-2" />
+              <div className="absolute -inset-4 bg-forest-700 rounded-2xl -rotate-3" />
+              <div className="absolute -inset-4 rounded-2xl rotate-2" style={{ backgroundColor: '#664930' }} />
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-deep">
                 <Image
                   src="/photos/RoundBales.jpg"
@@ -392,46 +393,14 @@ export default function HomePage(): JSX.Element {
         </div>
       </section>
 
-      {/* Service Info Strip */}
-      <section className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="chrome-surface p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-steel-200 flex items-center justify-center">
-              <svg className="w-7 h-7 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-steel-900 text-lg mb-1">{siteConfig.radiusMiles} Mile Radius</h3>
-            <p className="text-steel-600 text-sm">Delivery from {siteConfig.address.city}, {siteConfig.address.state}</p>
-          </div>
-          <div className="chrome-red p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
-              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-white text-lg mb-1">{siteConfig.deliveryLeadTimeDays} Day Lead Time</h3>
-            <p className="text-white/80 text-sm">Typical delivery turnaround</p>
-          </div>
-          <div className="chrome-surface-dark p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/10 flex items-center justify-center">
-              <svg className="w-7 h-7 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-white text-lg mb-1">Pickup Available</h3>
-            <p className="text-steel-400 text-sm">At our Chester, NH location</p>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="relative bg-steel-100 py-24">
+      <section className="relative py-24" style={{ backgroundColor: '#664930' }}>
+        <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, transparent 0%, #FFDBBB 20%, #FFDBBB 80%, transparent 100%)' }} />
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-steel-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Ready to Order?
           </h2>
-          <p className="text-lg text-steel-600 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-cream-200 mb-10 max-w-2xl mx-auto">
             {siteConfig.disclaimers.pricing} Get in touch for a personalized quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -450,6 +419,39 @@ export default function HomePage(): JSX.Element {
             >
               Contact Us
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Info Strip */}
+      <section className="relative">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="earth-surface-warm p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-earth-300 flex items-center justify-center">
+              <svg className="w-7 h-7 text-earth-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-forest-800 text-lg mb-1">{siteConfig.radiusMiles} Mile Radius</h3>
+            <p className="text-earth-600 text-sm">Delivery from {siteConfig.address.city}, {siteConfig.address.state}</p>
+          </div>
+          <div className="sage-accent p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-white text-lg mb-1">{siteConfig.deliveryLeadTimeDays} Day Lead Time</h3>
+            <p className="text-white/80 text-sm">Typical delivery turnaround</p>
+          </div>
+          <div className="forest-accent p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/15 flex items-center justify-center">
+              <svg className="w-7 h-7 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-cream-100 text-lg mb-1">Pickup Available</h3>
+            <p className="text-cream-200/80 text-sm">At our Chester, NH location</p>
           </div>
         </div>
       </section>

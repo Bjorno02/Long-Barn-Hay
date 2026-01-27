@@ -77,12 +77,13 @@ export default function DeliveryPage(): JSX.Element {
       </section>
 
       {/* Checker Section */}
-      <section className="relative bg-steel-100 py-16">
+      <section className="relative earth-surface py-16">
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Radius Checker */}
             <div className="relative -mt-24">
-              <div className="absolute -inset-1 rounded-2xl bg-chrome-gradient" />
+              <div className="absolute -inset-1 rounded-2xl bg-hay-400" />
               <div className="relative">
                 <RadiusChecker />
               </div>
@@ -90,7 +91,7 @@ export default function DeliveryPage(): JSX.Element {
 
             {/* How It Works */}
             <div className="lg:pt-8">
-              <h2 className="text-2xl font-bold text-steel-900 mb-8">How It Works</h2>
+              <h2 className="text-2xl font-bold text-earth-900 mb-8">How It Works</h2>
               
               <div className="space-y-8">
                 <Step 
@@ -117,45 +118,45 @@ export default function DeliveryPage(): JSX.Element {
       {/* Info Cards */}
       <section className="relative">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="chrome-surface p-10 text-center border-r border-steel-200">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-steel-200 flex items-center justify-center">
-              <svg className="w-7 h-7 text-barn-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="earth-surface-warm p-10 text-center border-r border-earth-200">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-earth-300 flex items-center justify-center">
+              <svg className="w-7 h-7 text-earth-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="font-bold text-steel-900 text-xl mb-1">{siteConfig.deliveryLeadTimeDays} Days</h3>
-            <p className="text-steel-600">Typical lead time</p>
+            <h3 className="font-bold text-earth-900 text-xl mb-1">{siteConfig.deliveryLeadTimeDays} Days</h3>
+            <p className="text-earth-700">Typical lead time</p>
           </div>
-          <div className="chrome-red p-10 text-center">
+          <div className="hay-accent p-10 text-center">
             <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
-              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-7 h-7 text-earth-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               </svg>
             </div>
-            <h3 className="font-bold text-white text-xl mb-1">{siteConfig.radiusMiles} Miles</h3>
-            <p className="text-white/80">Delivery radius</p>
+            <h3 className="font-bold text-earth-900 text-xl mb-1">{siteConfig.radiusMiles} Miles</h3>
+            <p className="text-earth-800/80">Delivery radius</p>
           </div>
-          <div className="chrome-surface-dark p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/10 flex items-center justify-center">
-              <svg className="w-7 h-7 text-steel-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="sage-accent p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/15 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
             </div>
             <h3 className="font-bold text-white text-xl mb-1">Pickup</h3>
-            <p className="text-steel-400">Available at our location</p>
+            <p className="text-sage-100">Available at our location</p>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-steel-100 py-24">
+      <section className="earth-surface py-24">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-barn-600/10 text-barn-600 text-sm font-medium mb-4">
-              <span className="w-2 h-2 rounded-full bg-barn-500" />
+            <div className="sage-pill inline-flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-sage-600" />
               Common Questions
             </div>
-            <h2 className="text-3xl font-bold text-steel-900">Delivery FAQ</h2>
+            <h2 className="text-3xl font-bold text-earth-900">Delivery FAQ</h2>
           </div>
 
           <div className="bg-white rounded-2xl p-8 shadow-chrome">
@@ -192,12 +193,12 @@ export default function DeliveryPage(): JSX.Element {
 function Step({ number, title, description }: { number: number; title: string; description: string }): JSX.Element {
   return (
     <div className="flex gap-5">
-      <div className="w-12 h-12 rounded-full chrome-red flex items-center justify-center font-bold text-lg flex-shrink-0">
+      <div className="w-12 h-12 rounded-full hay-accent flex items-center justify-center font-bold text-lg flex-shrink-0">
         {number}
       </div>
       <div className="pt-1">
-        <h3 className="font-semibold text-steel-900 text-lg">{title}</h3>
-        <p className="text-steel-600 mt-1">{description}</p>
+        <h3 className="font-semibold text-earth-900 text-lg">{title}</h3>
+        <p className="text-earth-700 mt-1">{description}</p>
       </div>
     </div>
   );
