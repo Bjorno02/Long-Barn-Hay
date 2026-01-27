@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-steel-100 text-steel-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-barn-500 text-white;
+  }
+}
+
+@layer components {
+  /* Chrome metallic surface - light */
+  .chrome-surface {
+    background: linear-gradient(180deg, #fafafa 0%, #e5e5e5 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      inset 0 -1px 0 rgba(0,0,0,0.05),
+      0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* Chrome metallic surface - dark */
+  .chrome-surface-dark {
+    background: linear-gradient(180deg, #404040 0%, #262626 50%, #404040 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.1),
+      inset 0 -1px 0 rgba(0,0,0,0.3),
+      0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Chrome pill/badge */
+  .chrome-pill {
+    background: linear-gradient(180deg, #fafafa 0%, #d4d4d8 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.9),
+      0 1px 2px rgba(0,0,0,0.15);
+    @apply px-3 py-1 rounded-full text-sm font-medium text-steel-700;
+  }
+
+  /* Chrome pill - dark variant */
+  .chrome-pill-dark {
+    background: linear-gradient(180deg, #525252 0%, #262626 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.15),
+      0 1px 2px rgba(0,0,0,0.3);
+    @apply px-3 py-1 rounded-full text-sm font-medium text-steel-200;
+  }
+
+  /* Chrome divider - horizontal */
+  .chrome-divider {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      #d4d4d8 10%, 
+      #fafafa 50%, 
+      #d4d4d8 90%, 
+      transparent 100%
+    );
+  }
+
+  /* Chrome divider - vertical */
+  .chrome-divider-vertical {
+    width: 2px;
+    background: linear-gradient(180deg, 
+      transparent 0%, 
+      #d4d4d8 10%, 
+      #fafafa 50%, 
+      #d4d4d8 90%, 
+      transparent 100%
+    );
+  }
+
+  /* Chrome button */
+  .chrome-button {
+    background: linear-gradient(180deg, #fafafa 0%, #e5e5e5 50%, #d4d4d8 100%);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.9),
+      inset 0 -1px 0 rgba(0,0,0,0.1);
+    @apply text-steel-800 font-medium transition-all;
+  }
+
+  .chrome-button:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 50%, #e5e5e5 100%);
+    box-shadow: 
+      0 4px 8px rgba(0,0,0,0.2),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 0 rgba(0,0,0,0.05);
+  }
+
+  .chrome-button:active {
+    background: linear-gradient(180deg, #d4d4d8 0%, #e5e5e5 50%, #fafafa 100%);
+    box-shadow: 
+      inset 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Chrome card with bevel */
+  .chrome-card {
+    background: linear-gradient(145deg, #fafafa 0%, #e5e5e5 100%);
+    box-shadow: 
+      0 4px 16px rgba(0,0,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.8),
+      inset 0 -1px 0 rgba(0,0,0,0.05);
+    @apply rounded-xl;
+  }
+
+  /* Chrome frame/border */
+  .chrome-frame {
+    position: relative;
+    @apply rounded-lg;
+  }
+
+  .chrome-frame::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(135deg, #d4d4d8 0%, #fafafa 25%, #a3a3a3 50%, #fafafa 75%, #d4d4d8 100%);
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* Chrome accent line */
+  .chrome-line {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255,255,255,0.8) 20%, 
+      rgba(255,255,255,0.8) 80%, 
+      transparent
+    );
+  }
+
+  /* Chrome border effect */
+  .chrome-border {
+    border: 1px solid;
+    border-image: linear-gradient(180deg, #d4d4d4 0%, #a3a3a3 100%) 1;
+  }
+
+  /* Red chrome surface */
+  .chrome-red {
+    background: linear-gradient(180deg, #dc2626 0%, #991b1b 50%, #b91c1c 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.2),
+      0 2px 8px rgba(185, 28, 28, 0.3);
+    @apply text-white;
+  }
+
+  /* Red surface */
+  .red-surface {
+    @apply bg-barn-600 text-white;
+  }
+
+  /* Grey surface */
+  .grey-surface {
+    @apply bg-steel-200 text-steel-900;
+  }
+}
