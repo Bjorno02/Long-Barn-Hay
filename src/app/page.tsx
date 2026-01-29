@@ -205,7 +205,7 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* About / Intro Section */}
-      <section className="relative py-24" style={{ backgroundColor: '#FFDBBB' }}>
+      <section className="relative py-24" style={{ backgroundColor: '#fff6ef' }}>
         <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
