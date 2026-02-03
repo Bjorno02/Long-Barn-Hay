@@ -108,10 +108,6 @@ export default function HomePage(): JSX.Element {
           {/* Sub info */}
           <div className="flex flex-wrap justify-center gap-4 mb-10 text-white/70">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-barn-500" />
-              {siteConfig.radiusMiles} Mile Delivery
-            </span>
-            <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-chrome-400" />
               {siteConfig.deliveryLeadTimeDays} Day Lead Time
             </span>
@@ -124,16 +120,16 @@ export default function HomePage(): JSX.Element {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/quote"
+              href="/contact"
               className="chrome-red px-10 py-4 rounded-full text-lg font-semibold hover:shadow-red-glow transition-all"
             >
-              Get a Quote
+              Contact Us
             </Link>
             <Link
-              href="/delivery"
+              href="/products"
               className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all"
             >
-              Check Delivery Range
+              View Products
             </Link>
           </div>
         </div>
@@ -212,19 +208,18 @@ export default function HomePage(): JSX.Element {
             {/* Text Content */}
             <div>
               <div className="inline-flex items-center gap-2 cream-pill mb-6">
-                <span className="w-2 h-2 rounded-full bg-forest-700" />
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
                 About Our Hay
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-bold text-forest-800 mb-6 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-earth-700 mb-6 leading-tight">
                 Quality Hay for<br />
                 <span className="text-barn-600">Every Need</span>
               </h2>
               
               <p className="text-lg text-earth-600 mb-8 leading-relaxed">
                 From small hobby farms to large-scale operations, we provide premium 1st and 2nd cut hay 
-                in a variety of bale formats. Our hay is harvested from local fields in Chester, NH 
-                and delivered within a {siteConfig.radiusMiles}-mile radius.
+                in a variety of bale formats. Our hay is harvested from local fields in Chester, NH.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -235,29 +230,29 @@ export default function HomePage(): JSX.Element {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-forest-800">Small Squares, Large Rounds, Large Squares</h3>
-                    <p className="text-earth-600 text-sm">Multiple bale formats to suit your operation</p>
+                    <h3 className="font-semibold text-earth-700">Small Squares, Large Rounds, Large Squares</h3>
+                    <p className="text-earth-500 text-sm">Multiple bale formats to suit your operation</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg sage-accent flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg copper-accent flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-forest-800">1st and 2nd Cut Available</h3>
-                    <p className="text-earth-600 text-sm">Choose based on your animals' nutritional needs</p>
+                    <h3 className="font-semibold text-earth-700">1st and 2nd Cut Available</h3>
+                    <p className="text-earth-500 text-sm">Choose based on your animals' nutritional needs</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg forest-accent flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-lg amber-accent flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-amber-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-forest-800">Flexible Quantities</h3>
+                    <h3 className="font-semibold text-earth-700">Flexible Quantities</h3>
                     <p className="text-earth-600 text-sm">From small orders to large loads</p>
                   </div>
                 </div>
@@ -276,8 +271,8 @@ export default function HomePage(): JSX.Element {
 
             {/* Image */}
             <div className="relative">
-              <div className="absolute -inset-4 bg-forest-700 rounded-2xl -rotate-3" />
-              <div className="absolute -inset-4 rounded-2xl rotate-2" style={{ backgroundColor: '#664930' }} />
+              <div className="absolute -inset-4 bg-copper-500 rounded-2xl -rotate-3" />
+              <div className="absolute -inset-4 bg-cream-300 rounded-2xl rotate-2" />
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-deep">
                 <Image
                   src="/photos/RoundBales.jpg"
@@ -314,7 +309,7 @@ export default function HomePage(): JSX.Element {
               <div className="relative bg-steel-800 rounded-2xl overflow-hidden">
                 <div className="aspect-[16/9] relative">
                   <Image
-                    src="/photos/1stCut.jpg"
+                    src="/photos/1stCutFr.jpeg"
                     alt="1st Cut Hay"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -337,10 +332,10 @@ export default function HomePage(): JSX.Element {
                     ))}
                   </ul>
                   <Link
-                    href="/quote"
+                    href="/products"
                     className="inline-flex items-center gap-2 chrome-button px-5 py-2.5 rounded-lg text-sm font-medium"
                   >
-                    Request Quote
+                    Learn More
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -355,7 +350,7 @@ export default function HomePage(): JSX.Element {
               <div className="relative bg-barn-600 rounded-2xl overflow-hidden">
                 <div className="aspect-[16/9] relative">
                   <Image
-                    src="/photos/2ndCut.jpg"
+                    src="/photos/2ndCutFr.jpeg"
                     alt="2nd Cut Hay"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -378,10 +373,10 @@ export default function HomePage(): JSX.Element {
                     ))}
                   </ul>
                   <Link
-                    href="/quote"
+                    href="/products"
                     className="inline-flex items-center gap-2 chrome-button px-5 py-2.5 rounded-lg text-sm font-medium"
                   >
-                    Request Quote
+                    Learn More
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -394,30 +389,30 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24" style={{ backgroundColor: '#664930' }}>
-        <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, transparent 0%, #FFDBBB 20%, #FFDBBB 80%, transparent 100%)' }} />
+      <section className="relative earth-surface-warm py-24">
+        <div className="absolute top-0 left-0 right-0 earth-divider" />
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-earth-700 mb-6">
             Ready to Order?
           </h2>
-          <p className="text-lg text-cream-200 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-earth-500 mb-10 max-w-2xl mx-auto">
             {siteConfig.disclaimers.pricing} Get in touch for a personalized quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/quote"
+              href="/contact"
               className="chrome-red px-10 py-4 rounded-full text-lg font-semibold hover:shadow-red-glow transition-all inline-flex items-center justify-center gap-2"
             >
-              Request a Quote
+              Contact Us
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
             <Link
-              href="/contact"
+              href="/products"
               className="chrome-button px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center justify-center"
             >
-              Contact Us
+              View Products
             </Link>
           </div>
         </div>
@@ -425,44 +420,28 @@ export default function HomePage(): JSX.Element {
 
       {/* Service Info Strip */}
       <section className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="earth-surface-warm p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-earth-300 flex items-center justify-center">
-              <svg className="w-7 h-7 text-earth-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-forest-800 text-lg mb-1">{siteConfig.radiusMiles} Mile Radius</h3>
-            <p className="text-earth-600 text-sm">Delivery from {siteConfig.address.city}, {siteConfig.address.state}</p>
-          </div>
-          <div className="sage-accent p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
-              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="p-10 text-center" style={{ backgroundColor: '#664930' }}>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/15 flex items-center justify-center">
+              <svg className="w-7 h-7 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="font-bold text-white text-lg mb-1">{siteConfig.deliveryLeadTimeDays} Day Lead Time</h3>
-            <p className="text-white/80 text-sm">Typical delivery turnaround</p>
+            <h3 className="font-bold text-cream-100 text-lg mb-1">{siteConfig.deliveryLeadTimeDays} Day Lead Time</h3>
+            <p className="text-cream-200/80 text-sm">Typical delivery turnaround</p>
           </div>
-          <div className="forest-accent p-10 text-center">
-            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/15 flex items-center justify-center">
-              <svg className="w-7 h-7 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="copper-accent p-10 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white/20 flex items-center justify-center">
+              <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
               </svg>
             </div>
-            <h3 className="font-bold text-cream-100 text-lg mb-1">Pickup Available</h3>
-            <p className="text-cream-200/80 text-sm">At our Chester, NH location</p>
+            <h3 className="font-bold text-white text-lg mb-1">Pickup Available</h3>
+            <p className="text-white/80 text-sm">At our Chester, NH location</p>
           </div>
         </div>
       </section>
 
-      {/* BeSide */}
-      <section className="relative h-14 chrome-surface-dark">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="relative h-full flex items-center justify-center">
-          <span className="text-steel-500 text-xs tracking-widest uppercase">BeSide — internal process tool</span>
-        </div>
-      </section>
     </>
   );
 }

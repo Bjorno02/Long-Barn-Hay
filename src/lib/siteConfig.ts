@@ -20,9 +20,8 @@ export const siteConfig: SiteConfig = {
   },
 
   facebookUrl: 'https://www.facebook.com/profile.php?id=61574773954576',
-  contactEmail: 'contact@longbarnhay.com',
+  contactEmail: 'Longbarnhay@gmail.com',
 
-  radiusMiles: 50,
   deliveryLeadTimeDays: '3–5',
 
   products: [
@@ -62,37 +61,39 @@ export const siteConfig: SiteConfig = {
     {
       id: '1st',
       name: '1st Cut',
-      description: 'Harvested late spring to early summer. First growth of the season.',
+      description: 'First harvest of the season. Coarser and higher in fiber, ideal for maintenance feeding.',
+      fullDescription: 'The first harvest taken in late spring or early summer. It\'s usually coarser, thicker-stemmed, and higher in fiber, with lower protein and energy than later cuttings. Great for maintenance feeding but less ideal for high-performance or growing animals.',
       characteristics: [
-        'Coarser texture, more stem',
+        'Coarser, thicker-stemmed texture',
         'Higher fiber content',
-        'Lower protein density',
-        'Good for bulk and fiber needs',
+        'Lower protein and energy',
+        'Great for easy keepers and beef cattle',
+        'Ideal for animals needing roughage over calories',
       ],
     },
     {
       id: '2nd',
       name: '2nd Cut',
-      description: 'Harvested 6-8 weeks after first cutting. Different nutritional profile.',
+      description: 'Later summer harvest. Softer and leafier with higher protein and energy.',
+      fullDescription: 'Harvested later in the summer after the field regrows. Typically softer, leafier, and finer-stemmed with higher protein, energy, and better digestibility. Often preferred for horses in work, growing animals, and dairy cows.',
       characteristics: [
-        'Softer, leafier texture',
+        'Softer, leafier, finer-stemmed',
         'Higher protein and energy',
-        'Greener appearance',
-        'For higher nutritional needs',
+        'Better digestibility',
+        'Preferred for horses in work',
+        'Great for growing animals and dairy cows',
       ],
     },
   ],
 
   disclaimers: {
-    pricing: 'Pricing varies by quantity and fulfillment method. Request a quote for current pricing.',
-    delivery: 'Delivery within 50 miles. Lead time typically 3-5 days.',
+    pricing: 'Pricing varies by quantity and fulfillment method. Contact us for current pricing.',
+    delivery: 'Lead time typically 3-5 days. Contact us for delivery availability.',
   },
 
   navigation: [
     { label: 'Products', href: '/products' },
-    { label: 'Delivery', href: '/delivery' },
-    { label: 'Quote', href: '/quote' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Giveaway', href: '/giveaway' },
   ],
 };
 

@@ -163,94 +163,104 @@
     @apply bg-steel-200 text-steel-900;
   }
 
-  /* Earth tone surfaces */
+  /* Warm earth surfaces */
   .earth-surface {
-    background: linear-gradient(180deg, #fffdfb 0%, #fff8f2 100%);
-    @apply text-forest-800;
+    background: linear-gradient(180deg, #fffdfb 0%, #fff9f3 100%);
+    @apply text-espresso-800;
   }
 
   .earth-surface-warm {
-    background: linear-gradient(180deg, #fff8f2 0%, #FFDBBB 100%);
-    @apply text-forest-800;
+    background: linear-gradient(180deg, #fff9f3 0%, #ffeed9 100%);
+    @apply text-espresso-800;
   }
 
   .earth-surface-dark {
-    background: linear-gradient(180deg, #404E3B 0%, #343f30 100%);
+    background: linear-gradient(180deg, #5d4037 0%, #4a342d 100%);
     @apply text-cream-100;
   }
 
-  /* Forest green accent (#404E3B) */
-  .forest-accent {
-    background: linear-gradient(180deg, #4a6043 0%, #404E3B 50%, #343f30 100%);
+  /* Copper/Terracotta accent (warm rust) */
+  .copper-accent {
+    background: linear-gradient(180deg, #d4845a 0%, #c17048 50%, #a25a3a 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.2),
+      0 2px 8px rgba(193, 112, 72, 0.4);
+    @apply text-white;
+  }
+
+  /* Amber/Golden accent (warm gold) */
+  .amber-accent {
+    background: linear-gradient(180deg, #edc85a 0%, #e4b035 50%, #cc9422 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(0,0,0,0.15),
+      0 2px 8px rgba(228, 176, 53, 0.4);
+    @apply text-espresso-900;
+  }
+
+  /* Earth/Caramel accent (warm brown) */
+  .earth-accent {
+    background: linear-gradient(180deg, #c9a87d 0%, #b8905d 50%, #a77a4c 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.15),
+      0 2px 8px rgba(184, 144, 93, 0.3);
+    @apply text-white;
+  }
+
+  /* Espresso accent (deep warm brown) */
+  .espresso-accent {
+    background: linear-gradient(180deg, #76503c 0%, #5d4037 50%, #4a342d 100%);
     box-shadow: 
       inset 0 1px 0 rgba(255,255,255,0.15),
       inset 0 -1px 0 rgba(0,0,0,0.2),
-      0 2px 8px rgba(64, 78, 59, 0.4);
+      0 2px 8px rgba(93, 64, 55, 0.4);
     @apply text-cream-100;
   }
 
-  /* Sage green accent (#7B9669) */
-  .sage-accent {
-    background: linear-gradient(180deg, #8ba77a 0%, #7B9669 50%, #6a8458 100%);
-    box-shadow: 
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.15),
-      0 2px 8px rgba(123, 150, 105, 0.3);
-    @apply text-white;
-  }
-
-  /* Earth/taupe accent (#997E67) */
-  .earth-accent {
-    background: linear-gradient(180deg, #a8907a 0%, #997E67 50%, #8a7059 100%);
-    box-shadow: 
-      inset 0 1px 0 rgba(255,255,255,0.2),
-      inset 0 -1px 0 rgba(0,0,0,0.15),
-      0 2px 8px rgba(153, 126, 103, 0.3);
-    @apply text-white;
-  }
-
-  /* Earth divider */
+  /* Warm earth divider */
   .earth-divider {
     height: 2px;
     background: linear-gradient(90deg, 
       transparent 0%, 
-      #d4c4b4 10%, 
-      #FFDBBB 50%, 
-      #d4c4b4 90%, 
+      #dcc7a9 10%, 
+      #ffeed9 50%, 
+      #dcc7a9 90%, 
       transparent 100%
     );
   }
 
   /* Cream pill/badge */
   .cream-pill {
-    background: linear-gradient(180deg, #fff8f2 0%, #FFDBBB 100%);
+    background: linear-gradient(180deg, #fff9f3 0%, #ffeed9 100%);
     box-shadow: 
       inset 0 1px 0 rgba(255,255,255,0.9),
       0 1px 2px rgba(0,0,0,0.1);
-    @apply px-3 py-1 rounded-full text-sm font-medium text-forest-800;
+    @apply px-3 py-1 rounded-full text-sm font-medium text-espresso-800;
   }
 
-  /* Forest pill/badge */
-  .forest-pill {
-    background: linear-gradient(180deg, #e6ebe4 0%, #cdd7c9 100%);
+  /* Copper pill/badge */
+  .copper-pill {
+    background: linear-gradient(180deg, #fcf0ea 0%, #f8ddd1 100%);
     box-shadow: 
       inset 0 1px 0 rgba(255,255,255,0.9),
       0 1px 2px rgba(0,0,0,0.1);
-    @apply px-3 py-1 rounded-full text-sm font-medium text-forest-700;
+    @apply px-3 py-1 rounded-full text-sm font-medium text-copper-700;
   }
 
-  /* Sage pill/badge */
-  .sage-pill {
-    background: linear-gradient(180deg, #e8ece4 0%, #d1d9c9 100%);
+  /* Amber pill/badge */
+  .amber-pill {
+    background: linear-gradient(180deg, #fdf8e3 0%, #faefc1 100%);
     box-shadow: 
       inset 0 1px 0 rgba(255,255,255,0.9),
       0 1px 2px rgba(0,0,0,0.1);
-    @apply px-3 py-1 rounded-full text-sm font-medium text-sage-500;
+    @apply px-3 py-1 rounded-full text-sm font-medium text-amber-700;
   }
 
   /* Earth pill/badge */
   .earth-pill {
-    background: linear-gradient(180deg, #f5f0eb 0%, #e8ddd3 100%);
+    background: linear-gradient(180deg, #f5efe7 0%, #ebdece 100%);
     box-shadow: 
       inset 0 1px 0 rgba(255,255,255,0.9),
       0 1px 2px rgba(0,0,0,0.1);

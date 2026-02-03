@@ -26,7 +26,7 @@ export function Footer(): JSX.Element {
               </Link>
               <p className="text-steel-400 mb-6 max-w-sm">
                 Quality 1st and 2nd cut hay from Chester, NH. 
-                Delivery available within {siteConfig.radiusMiles} miles.
+                Delivery and pickup available.
               </p>
               <address className="not-italic text-steel-500 text-sm">
                 {siteConfig.address.street}<br />
@@ -73,10 +73,10 @@ export function Footer(): JSX.Element {
 
               <div className="mt-6">
                 <Link
-                  href="/quote"
+                  href="/contact"
                   className="chrome-red px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2"
                 >
-                  Get a Quote
+                  Contact Us
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -92,7 +92,7 @@ export function Footer(): JSX.Element {
                 &copy; {new Date().getFullYear()} {siteConfig.companyName}. All rights reserved.
               </p>
               <div className="flex items-center gap-2 text-steel-600 text-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-hay-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                 <span>Chester, NH</span>
               </div>
             </div>

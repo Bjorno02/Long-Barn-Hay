@@ -1,16 +1,9 @@
 import type { MetadataRoute } from 'next';
 
-// TODO: Update to production domain
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://longbarnhay.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    '',
-    '/products',
-    '/delivery',
-    '/quote',
-    '/contact',
-  ];
+  const routes = ['', '/products', '/giveaway', '/contact'];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,

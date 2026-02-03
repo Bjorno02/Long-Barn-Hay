@@ -93,7 +93,7 @@ export default function ContactPage(): JSX.Element {
               </div>
 
               {/* Delivery Info Card */}
-              <div className="sage-accent rounded-2xl p-6">
+              <div className="copper-accent rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,9 +102,9 @@ export default function ContactPage(): JSX.Element {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white mb-1">Delivery</h3>
-                    <p className="text-sage-100 text-sm leading-relaxed">
-                      {siteConfig.radiusMiles} mile radius<br />
-                      {siteConfig.deliveryLeadTimeDays} day lead time
+                    <p className="text-cream-200 text-sm leading-relaxed">
+                      {siteConfig.deliveryLeadTimeDays} day lead time<br />
+                      Contact for availability
                     </p>
                   </div>
                 </div>
