@@ -242,7 +242,7 @@ export default function HomePage(): JSX.Element {
                   </div>
                   <div>
                     <h3 className="font-semibold text-earth-700">1st and 2nd Cut Available</h3>
-                    <p className="text-earth-500 text-sm">Choose based on your animals' nutritional needs</p>
+                    <p className="text-earth-500 text-sm">Choose based on your animals&apos; nutritional needs</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

@@ -20,9 +20,11 @@ export function Header(): JSX.Element {
     setIsMenuOpen(false);
   }, []);
 
+  // Close menu on route change - legitimate sync to navigation
   useEffect(() => {
-    closeMenu();
-  }, [pathname, closeMenu]);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {

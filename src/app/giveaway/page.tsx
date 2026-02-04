@@ -24,7 +24,7 @@ export default function GiveawayPage(): JSX.Element {
             Hay Giveaway
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-            We're planning something special for our community. Check back soon for details on our upcoming hay giveaway!
+            We&apos;re planning something special for our community. Check back soon for details on our upcoming hay giveaway!
           </p>
         </div>
       </section>
@@ -44,7 +44,7 @@ export default function GiveawayPage(): JSX.Element {
             </h2>
             <p className="text-earth-600 mb-8">
               Follow us on Facebook to be the first to know when our giveaway launches. 
-              We'll be giving away quality hay to lucky winners in our delivery area!
+              We&apos;ll be giving away quality hay to lucky winners in our delivery area!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
