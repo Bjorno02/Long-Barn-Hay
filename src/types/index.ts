@@ -13,6 +13,7 @@ export interface HayCutInfo {
   id: HayCut;
   name: string;
   description: string;
+  fullDescription: string;
   characteristics: string[];
 }
 
@@ -28,37 +29,6 @@ export interface Address {
   country: string;
   zipCode: string;
   fullAddress: string;
-}
-
-export interface DeliveryCheckResult {
-  isInRange: boolean;
-  distanceMiles: number;
-  message: string;
-}
-
-export interface GeocodingResult {
-  success: boolean;
-  coordinates?: Coordinates;
-  formattedAddress?: string;
-  error?: string;
-}
-
-export type ContactMethod = 'phone' | 'email' | 'text';
-
-export type FulfillmentMethod = 'delivery' | 'pickup';
-
-export interface QuoteFormData {
-  name: string;
-  phone: string;
-  email: string;
-  preferredContact: ContactMethod;
-  address: string;
-  fulfillmentMethod: FulfillmentMethod;
-  productType: BaleType;
-  hayCut: HayCut;
-  quantity: number;
-  timeframe?: string;
-  notes?: string;
 }
 
 export interface ContactFormData {
@@ -92,7 +62,6 @@ export interface SiteConfig {
   coordinates: Coordinates;
   facebookUrl: string;
   contactEmail: string;
-  radiusMiles: number;
   deliveryLeadTimeDays: string;
   products: Product[];
   hayCuts: HayCutInfo[];
