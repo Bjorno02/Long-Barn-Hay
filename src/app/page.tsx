@@ -69,6 +69,7 @@ export default function HomePage(): JSX.Element {
               fill
               className="object-cover"
               priority={index === 0}
+              unoptimized
             />
           </div>
         ))}
@@ -206,6 +207,7 @@ export default function HomePage(): JSX.Element {
                   alt={img.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  unoptimized
                 />
               </div>
             ))}

@@ -20,6 +20,7 @@ export default function ProductsPage(): JSX.Element {
             fill
             className="object-cover"
             priority
+            unoptimized
           />
         </div>
 
