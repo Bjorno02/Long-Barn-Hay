@@ -20,11 +20,9 @@ export function Header(): JSX.Element {
     setIsMenuOpen(false);
   }, []);
 
-  // Close menu on route change - legitimate sync to navigation
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMenuOpen(false);
-  }, [pathname]);
+    closeMenu();
+  }, [pathname, closeMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +31,7 @@ export function Header(): JSX.Element {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -59,29 +57,29 @@ export function Header(): JSX.Element {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-barn-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-barn-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-white"
       >
         Skip to main content
       </a>
 
-      <header 
+      <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled || !isHome
-            ? 'bg-steel-900/95 backdrop-blur-md shadow-deep'
-            : 'bg-transparent'
+          'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
+          isScrolled || !isHome ? 'bg-steel-900/95 shadow-deep backdrop-blur-md' : 'bg-transparent'
         )}
       >
-        <nav 
-          className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+        <nav
+          className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6"
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group relative z-10">
-            <div className={cn(
-              'relative w-12 h-12 rounded-full overflow-hidden transition-all duration-300',
-              isScrolled || !isHome ? 'bg-white shadow-chrome' : 'bg-white/90 shadow-lg'
-            )}>
+          <Link href="/" className="group relative z-10 flex items-center gap-3">
+            <div
+              className={cn(
+                'relative h-12 w-12 overflow-hidden rounded-full transition-all duration-300',
+                isScrolled || !isHome ? 'bg-white shadow-chrome' : 'bg-white/90 shadow-lg'
+              )}
+            >
               <Image
                 src="/photos/LongBarnLogo.jpg"
                 alt=""
@@ -90,18 +88,20 @@ export function Header(): JSX.Element {
                 priority
               />
             </div>
-            <span className={cn(
-              'text-lg font-semibold transition-colors duration-300',
-              isScrolled || !isHome 
-                ? 'text-white group-hover:text-barn-400' 
-                : 'text-white group-hover:text-barn-200'
-            )}>
+            <span
+              className={cn(
+                'text-lg font-semibold transition-colors duration-300',
+                isScrolled || !isHome
+                  ? 'text-white group-hover:text-barn-400'
+                  : 'text-white group-hover:text-barn-200'
+              )}
+            >
               {siteConfig.companyName}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-1" role="list">
+          <ul className="hidden items-center gap-1 md:flex" role="list">
             {siteConfig.navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -109,12 +109,12 @@ export function Header(): JSX.Element {
                   <Link
                     href={item.href}
                     className={cn(
-                      'px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300',
+                      'rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300',
                       isActive
                         ? 'bg-barn-600 text-white'
                         : isScrolled || !isHome
-                          ? 'text-white/80 hover:text-white hover:bg-white/10'
-                          : 'text-white/90 hover:text-white hover:bg-white/10'
+                          ? 'text-white/80 hover:bg-white/10 hover:text-white'
+                          : 'text-white/90 hover:bg-white/10 hover:text-white'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -126,7 +126,7 @@ export function Header(): JSX.Element {
             <li className="ml-2">
               <Link
                 href="/contact"
-                className="chrome-red px-6 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 hover:shadow-red-glow transition-all"
+                className="chrome-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all hover:shadow-red-glow"
               >
                 Contact Us
               </Link>
@@ -137,8 +137,10 @@ export function Header(): JSX.Element {
           <button
             type="button"
             className={cn(
-              'md:hidden p-3 rounded-full transition-all',
-              isScrolled || !isHome ? 'bg-white/10 hover:bg-white/20' : 'bg-white/10 hover:bg-white/20'
+              'rounded-full p-3 transition-all md:hidden',
+              isScrolled || !isHome
+                ? 'bg-white/10 hover:bg-white/20'
+                : 'bg-white/10 hover:bg-white/20'
             )}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
@@ -146,34 +148,46 @@ export function Header(): JSX.Element {
             onClick={toggleMenu}
           >
             <svg
-              className="w-5 h-5 text-white"
+              className="h-5 w-5 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
               {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </nav>
 
         {/* Chrome accent line */}
-        <div className={cn(
-          'h-[1px] transition-opacity duration-300',
-          isScrolled || !isHome 
-            ? 'bg-gradient-to-r from-transparent via-barn-500/50 to-transparent opacity-100' 
-            : 'opacity-0'
-        )} />
+        <div
+          className={cn(
+            'h-[1px] transition-opacity duration-300',
+            isScrolled || !isHome
+              ? 'bg-gradient-to-r from-transparent via-barn-500/50 to-transparent opacity-100'
+              : 'opacity-0'
+          )}
+        />
       </header>
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
           onClick={closeMenu}
           aria-hidden="true"
         />
@@ -183,33 +197,39 @@ export function Header(): JSX.Element {
       <div
         id="mobile-menu"
         className={cn(
-          'fixed top-0 right-0 h-full w-80 bg-steel-900 shadow-deep z-50 transform transition-transform duration-300 ease-out md:hidden',
+          'fixed right-0 top-0 z-50 h-full w-80 transform bg-steel-900 shadow-deep transition-transform duration-300 ease-out md:hidden',
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
         aria-hidden={!isMenuOpen}
       >
         <div className="p-6">
           {/* Close button */}
-          <div className="flex justify-between items-center mb-10">
+          <div className="mb-10 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white">
-                <Image
-                  src="/photos/LongBarnLogo.jpg"
-                  alt=""
-                  fill
-                  className="object-contain p-1"
-                />
+              <div className="relative h-10 w-10 overflow-hidden rounded-full bg-white">
+                <Image src="/photos/LongBarnLogo.jpg" alt="" fill className="object-contain p-1" />
               </div>
-              <span className="text-white font-semibold">Menu</span>
+              <span className="font-semibold text-white">Menu</span>
             </div>
             <button
               type="button"
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
               onClick={closeMenu}
               aria-label="Close menu"
             >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="h-5 w-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -221,8 +241,10 @@ export function Header(): JSX.Element {
                 <Link
                   href="/"
                   className={cn(
-                    'block px-4 py-4 rounded-xl font-medium transition-all',
-                    pathname === '/' ? 'bg-barn-600 text-white' : 'text-white/80 hover:bg-white/10 hover:text-white'
+                    'block rounded-xl px-4 py-4 font-medium transition-all',
+                    pathname === '/'
+                      ? 'bg-barn-600 text-white'
+                      : 'text-white/80 hover:bg-white/10 hover:text-white'
                   )}
                   onClick={closeMenu}
                 >
@@ -236,8 +258,10 @@ export function Header(): JSX.Element {
                     <Link
                       href={item.href}
                       className={cn(
-                        'block px-4 py-4 rounded-xl font-medium transition-all',
-                        isActive ? 'bg-barn-600 text-white' : 'text-white/80 hover:bg-white/10 hover:text-white'
+                        'block rounded-xl px-4 py-4 font-medium transition-all',
+                        isActive
+                          ? 'bg-barn-600 text-white'
+                          : 'text-white/80 hover:bg-white/10 hover:text-white'
                       )}
                       aria-current={isActive ? 'page' : undefined}
                       onClick={closeMenu}
@@ -251,10 +275,10 @@ export function Header(): JSX.Element {
           </nav>
 
           {/* CTA */}
-          <div className="mt-8 pt-8 border-t border-white/10">
+          <div className="mt-8 border-t border-white/10 pt-8">
             <Link
               href="/contact"
-              className="chrome-red block text-center px-6 py-4 rounded-xl font-medium"
+              className="chrome-red block rounded-xl px-6 py-4 text-center font-medium"
               onClick={closeMenu}
             >
               Contact Us
@@ -262,15 +286,17 @@ export function Header(): JSX.Element {
           </div>
 
           {/* Contact Info */}
-          <div className="mt-8 text-white/50 text-sm">
-            <p>{siteConfig.address.city}, {siteConfig.address.state}</p>
-            <a 
+          <div className="mt-8 text-sm text-white/50">
+            <p>
+              {siteConfig.address.city}, {siteConfig.address.state}
+            </p>
+            <a
               href={siteConfig.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-3 text-white/60 hover:text-white transition-colors"
+              className="mt-3 inline-flex items-center gap-2 text-white/60 transition-colors hover:text-white"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
               </svg>
               Facebook

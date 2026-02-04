@@ -1,39 +1,59 @@
 'use server';
 
+import { Resend } from 'resend';
 import type { FormState } from '@/types';
-import {
-  contactFormSchema,
-  giveawayFormSchema,
-  validateFormData,
-} from '@/lib/validation';
+import { contactFormSchema, giveawayFormSchema, validateFormData } from '@/lib/validation';
 import { siteConfig } from '@/lib/siteConfig';
 
-/**
- * Sends email notification (placeholder for real email service)
- * TODO: Replace with Resend, SendGrid, or similar
- */
-async function sendEmailNotification(
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+async function sendEmail(
   to: string,
   subject: string,
   body: string
 ): Promise<{ success: boolean; error?: string }> {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
-  if (process.env.NODE_ENV === 'development') {
-    console.warn('=== EMAIL NOTIFICATION (PLACEHOLDER) ===');
-    console.warn(`To: ${to}`);
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not configured - email not sent');
+    console.warn(`Would have sent to: ${to}`);
     console.warn(`Subject: ${subject}`);
     console.warn(`Body:\n${body}`);
-    console.warn('========================================');
+    return { success: true };
   }
 
-  return { success: true };
+  try {
+    const { error } = await resend.emails.send({
+      from: 'Long Barn Hay <onboarding@resend.dev>',
+      to: [to],
+      subject: subject,
+      text: body,
+    });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (err) {
+    console.error('Email send error:', err);
+    return { success: false, error: 'Failed to send email' };
+  }
 }
 
 export async function submitContactForm(
   _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
+  // Honeypot check - if filled, it's a bot
+  const honeypot = formData.get('website');
+  if (honeypot) {
+    // Silently reject but return success to not tip off bots
+    return {
+      success: true,
+      message: 'Thank you for your message.',
+    };
+  }
+
   const rawData = {
     name: formData.get('name'),
     email: formData.get('email'),
@@ -53,7 +73,7 @@ export async function submitContactForm(
 
   const data = validation.data;
 
-  const emailSubject = `Contact Form Message from ${data.name}`;
+  const emailSubject = `New Contact Form Message from ${data.name}`;
   const emailBody = `
 New Contact Form Submission
 ===========================
@@ -64,13 +84,12 @@ ${data.phone ? `Phone: ${data.phone}` : ''}
 
 Message:
 ${data.message}
+
+---
+Sent from Long Barn Hay website
   `.trim();
 
-  const emailResult = await sendEmailNotification(
-    siteConfig.contactEmail,
-    emailSubject,
-    emailBody
-  );
+  const emailResult = await sendEmail(siteConfig.contactEmail, emailSubject, emailBody);
 
   if (!emailResult.success) {
     return {
@@ -89,6 +108,15 @@ export async function submitGiveawayForm(
   _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
+  // Honeypot check - if filled, it's a bot
+  const honeypot = formData.get('website');
+  if (honeypot) {
+    return {
+      success: true,
+      message: 'Thank you for signing up.',
+    };
+  }
+
   const rawData = {
     name: formData.get('name'),
     email: formData.get('email'),
@@ -115,13 +143,12 @@ New Giveaway Signup
 Name: ${data.name}
 Email: ${data.email}
 ${data.phone ? `Phone: ${data.phone}` : ''}
+
+---
+Sent from Long Barn Hay website
   `.trim();
 
-  const emailResult = await sendEmailNotification(
-    siteConfig.contactEmail,
-    emailSubject,
-    emailBody
-  );
+  const emailResult = await sendEmail(siteConfig.contactEmail, emailSubject, emailBody);
 
   if (!emailResult.success) {
     return {

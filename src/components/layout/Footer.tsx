@@ -7,14 +7,14 @@ export function Footer(): JSX.Element {
     <footer className="relative">
       {/* Earth tone top accent */}
       <div className="earth-divider" />
-      
+
       <div className="bg-steel-900">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
             {/* Brand */}
             <div className="md:col-span-2">
-              <Link href="/" className="inline-flex items-center gap-3 mb-6">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden bg-white shadow-chrome">
+              <Link href="/" className="mb-6 inline-flex items-center gap-3">
+                <div className="relative h-14 w-14 overflow-hidden rounded-full bg-white shadow-chrome">
                   <Image
                     src="/photos/LongBarnLogo.jpg"
                     alt="Long Barn Hay"
@@ -24,22 +24,55 @@ export function Footer(): JSX.Element {
                 </div>
                 <span className="text-xl font-bold text-white">{siteConfig.companyName}</span>
               </Link>
-              <p className="text-steel-400 mb-6 max-w-sm">
-                Quality 1st and 2nd cut hay from Chester, NH. 
-                Delivery and pickup available.
+              <p className="mb-6 max-w-sm text-steel-400">
+                Quality 1st and 2nd cut hay from Chester, NH. Delivery and pickup available.
               </p>
-              <address className="not-italic text-steel-500 text-sm">
-                {siteConfig.address.street}<br />
+              <address className="mb-4 text-sm not-italic text-steel-500">
+                {siteConfig.address.street}
+                <br />
                 {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zipCode}
               </address>
+              <div className="space-y-2 text-sm">
+                <a
+                  href="tel:603-556-8676"
+                  className="flex items-center gap-2 text-steel-400 transition-colors hover:text-white"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  (603) 556-8676
+                </a>
+                <a
+                  href="mailto:Longbarnhay@gmail.com"
+                  className="flex items-center gap-2 text-steel-400 transition-colors hover:text-white"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Longbarnhay@gmail.com
+                </a>
+              </div>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+              <h3 className="mb-4 font-semibold text-white">Quick Links</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/" className="text-steel-400 hover:text-white transition-colors text-sm">
+                  <Link
+                    href="/"
+                    className="text-sm text-steel-400 transition-colors hover:text-white"
+                  >
                     Home
                   </Link>
                 </li>
@@ -47,7 +80,7 @@ export function Footer(): JSX.Element {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-steel-400 hover:text-white transition-colors text-sm"
+                      className="text-sm text-steel-400 transition-colors hover:text-white"
                     >
                       {item.label}
                     </Link>
@@ -58,27 +91,32 @@ export function Footer(): JSX.Element {
 
             {/* Connect */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Connect</h3>
+              <h3 className="mb-4 font-semibold text-white">Connect</h3>
               <a
                 href={siteConfig.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 chrome-surface-dark px-5 py-3 rounded-xl hover:bg-steel-700 transition-colors"
+                className="chrome-surface-dark inline-flex items-center gap-3 rounded-xl px-5 py-3 transition-colors hover:bg-steel-700"
               >
-                <svg className="w-5 h-5 text-steel-300" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 text-steel-300" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
                 </svg>
-                <span className="text-steel-300 text-sm">Facebook</span>
+                <span className="text-sm text-steel-300">Facebook</span>
               </a>
 
               <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="chrome-red px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2"
+                  className="chrome-red inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
                 >
                   Contact Us
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </Link>
               </div>
@@ -86,13 +124,13 @@ export function Footer(): JSX.Element {
           </div>
 
           {/* Bottom bar */}
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="text-steel-500 text-sm">
+          <div className="mt-12 border-t border-white/10 pt-8">
+            <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+              <p className="text-sm text-steel-500">
                 &copy; {new Date().getFullYear()} {siteConfig.companyName}. All rights reserved.
               </p>
-              <div className="flex items-center gap-2 text-steel-600 text-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              <div className="flex items-center gap-2 text-xs text-steel-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
                 <span>Chester, NH</span>
               </div>
             </div>

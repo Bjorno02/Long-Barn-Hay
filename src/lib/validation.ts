@@ -26,8 +26,6 @@ export const contactFormSchema = z.object({
     .max(5000, 'Message must be less than 5000 characters'),
 });
 
-export type ContactFormSchema = z.infer<typeof contactFormSchema>;
-
 export const giveawayFormSchema = z.object({
   name: z
     .string()
@@ -39,16 +37,11 @@ export const giveawayFormSchema = z.object({
   phone: optionalPhoneSchema,
 });
 
-export type GiveawayFormSchema = z.infer<typeof giveawayFormSchema>;
-
-export type ValidationResult<T> =
+type ValidationResult<T> =
   | { success: true; data: T }
   | { success: false; errors: Record<string, string[]> };
 
-export function validateFormData<T>(
-  schema: z.ZodSchema<T>,
-  data: unknown
-): ValidationResult<T> {
+export function validateFormData<T>(schema: z.ZodSchema<T>, data: unknown): ValidationResult<T> {
   const result = schema.safeParse(data);
 
   if (result.success) {

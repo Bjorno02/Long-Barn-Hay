@@ -58,6 +58,8 @@ export interface NavItem {
 export interface SiteConfig {
   companyName: string;
   tagline: string;
+  siteUrl: string;
+  phone: string;
   address: Address;
   coordinates: Coordinates;
   facebookUrl: string;

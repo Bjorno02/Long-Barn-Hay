@@ -1,54 +1,95 @@
 # Long Barn Hay
 
-A clean, professional web application for Long Barn Hay built with Next.js 14, TypeScript, and Tailwind CSS.
+A professional web application for Long Barn Hay, a full-service hay supplier in Chester, NH.
 
-## Design
+## Tech Stack
 
-- Dark theme with red/grey/black/chrome aesthetic
-- Minimal navigation (Products, Delivery, Quote, Contact)
-- Mobile-responsive
-- Accessible forms
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS
+- **Forms:** React Server Actions + Zod validation
+- **Email:** Resend
+- **Testing:** Vitest + React Testing Library
 
-## Run Locally
+## Getting Started
 
-```bash
-npm install
-npm run dev
-```
+1. Install dependencies:
 
-Open [http://localhost:3000](http://localhost:3000)
+   ```bash
+   npm install
+   ```
+
+2. Set up environment variables:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Add your Resend API key to `.env.local`
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000)
+
+## Scripts
+
+| Command                 | Description                    |
+| ----------------------- | ------------------------------ |
+| `npm run dev`           | Start development server       |
+| `npm run build`         | Build for production           |
+| `npm run start`         | Start production server        |
+| `npm run lint`          | Run ESLint                     |
+| `npm run type-check`    | Run TypeScript compiler check  |
+| `npm run format`        | Format code with Prettier      |
+| `npm run format:check`  | Check code formatting          |
+| `npm run test`          | Run tests in watch mode        |
+| `npm run test:run`      | Run tests once                 |
+| `npm run test:coverage` | Run tests with coverage report |
 
 ## Project Structure
 
 ```
 src/
-├── app/                   # Pages
-│   ├── page.tsx          # Home
-│   ├── products/         # Products
-│   ├── delivery/         # Delivery radius checker
-│   ├── quote/            # Quote request
-│   └── contact/          # Contact
+├── app/
+│   ├── page.tsx           # Home
+│   ├── products/          # Products page
+│   ├── contact/           # Contact page
+│   ├── giveaway/          # Giveaway page
+│   ├── actions.ts         # Server actions
+│   ├── layout.tsx         # Root layout
+│   ├── error.tsx          # Error boundary
+│   ├── loading.tsx        # Loading state
+│   ├── not-found.tsx      # 404 page
+│   └── sitemap.ts         # Sitemap generation
 ├── components/
-│   ├── ui/               # Button, Input, etc.
-│   ├── layout/           # Header, Footer
-│   └── forms/            # Forms
-└── lib/
-    ├── siteConfig.ts     # All content config
-    ├── geocoding.ts      # Distance calculation
-    └── validation.ts     # Zod schemas
+│   ├── ui/                # Reusable UI components
+│   ├── layout/            # Header, Footer
+│   └── forms/             # Form components
+├── lib/
+│   ├── siteConfig.ts      # Site content configuration
+│   ├── validation.ts      # Zod validation schemas
+│   └── utils.ts           # Utility functions
+└── types/
+    └── index.ts           # TypeScript type definitions
 ```
 
 ## Configuration
 
-Edit `src/lib/siteConfig.ts` for:
-- Company info and address
-- Products and descriptions
+Edit `src/lib/siteConfig.ts` to update:
+
+- Company information
+- Contact details
+- Product descriptions
 - Navigation items
-- Delivery radius
 
-## Before Production
+## Deployment
 
-1. **Coordinates** - Update `coordinates` in siteConfig.ts
-2. **Geocoding** - Replace stub in `geocoding.ts` with real API
-3. **Email** - Replace placeholder in `actions.ts` with email service
-4. **Photos** - Add actual product images
+The site is configured for deployment on Vercel. Push to main branch to deploy.
+
+Required environment variable:
+
+- `RESEND_API_KEY` - For contact form email delivery
