@@ -20,8 +20,9 @@ export const siteConfig: SiteConfig = {
   },
 
   facebookUrl: 'https://www.facebook.com/profile.php?id=61574773954576',
-  contactEmail: 'Longbarnhay@gmail.com',
+  contactEmail: 'contact@longbarnhay.com',
 
+  radiusMiles: 50,
   deliveryLeadTimeDays: '3–5',
 
   products: [
@@ -61,39 +62,37 @@ export const siteConfig: SiteConfig = {
     {
       id: '1st',
       name: '1st Cut',
-      description: 'First harvest of the season. Coarser and higher in fiber, ideal for maintenance feeding.',
-      fullDescription: 'The first harvest taken in late spring or early summer. It\'s usually coarser, thicker-stemmed, and higher in fiber, with lower protein and energy than later cuttings. Great for maintenance feeding but less ideal for high-performance or growing animals.',
+      description: 'Harvested late spring to early summer. First growth of the season.',
       characteristics: [
-        'Coarser, thicker-stemmed texture',
+        'Coarser texture, more stem',
         'Higher fiber content',
-        'Lower protein and energy',
-        'Great for easy keepers and beef cattle',
-        'Ideal for animals needing roughage over calories',
+        'Lower protein density',
+        'Good for bulk and fiber needs',
       ],
     },
     {
       id: '2nd',
       name: '2nd Cut',
-      description: 'Later summer harvest. Softer and leafier with higher protein and energy.',
-      fullDescription: 'Harvested later in the summer after the field regrows. Typically softer, leafier, and finer-stemmed with higher protein, energy, and better digestibility. Often preferred for horses in work, growing animals, and dairy cows.',
+      description: 'Harvested 6-8 weeks after first cutting. Different nutritional profile.',
       characteristics: [
-        'Softer, leafier, finer-stemmed',
+        'Softer, leafier texture',
         'Higher protein and energy',
-        'Better digestibility',
-        'Preferred for horses in work',
-        'Great for growing animals and dairy cows',
+        'Greener appearance',
+        'For higher nutritional needs',
       ],
     },
   ],
 
   disclaimers: {
-    pricing: 'Pricing varies by quantity and fulfillment method. Contact us for current pricing.',
-    delivery: 'Lead time typically 3-5 days. Contact us for delivery availability.',
+    pricing: 'Pricing varies by quantity and fulfillment method. Request a quote for current pricing.',
+    delivery: 'Delivery within 50 miles. Lead time typically 3-5 days.',
   },
 
   navigation: [
     { label: 'Products', href: '/products' },
-    { label: 'Giveaway', href: '/giveaway' },
+    { label: 'Delivery', href: '/delivery' },
+    { label: 'Quote', href: '/quote' },
+    { label: 'Contact', href: '/contact' },
   ],
 };
 

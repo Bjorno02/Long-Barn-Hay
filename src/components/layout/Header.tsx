@@ -20,11 +20,9 @@ export function Header(): JSX.Element {
     setIsMenuOpen(false);
   }, []);
 
-  // Close menu on route change - legitimate sync to navigation
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMenuOpen(false);
-  }, [pathname]);
+    closeMenu();
+  }, [pathname, closeMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,10 +123,10 @@ export function Header(): JSX.Element {
             })}
             <li className="ml-2">
               <Link
-                href="/contact"
+                href="/quote"
                 className="chrome-red px-6 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2 hover:shadow-red-glow transition-all"
               >
-                Contact Us
+                Get Quote
               </Link>
             </li>
           </ul>
@@ -253,11 +251,11 @@ export function Header(): JSX.Element {
           {/* CTA */}
           <div className="mt-8 pt-8 border-t border-white/10">
             <Link
-              href="/contact"
+              href="/quote"
               className="chrome-red block text-center px-6 py-4 rounded-xl font-medium"
               onClick={closeMenu}
             >
-              Contact Us
+              Get a Quote
             </Link>
           </div>
 
