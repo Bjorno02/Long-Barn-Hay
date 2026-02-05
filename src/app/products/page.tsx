@@ -18,9 +18,10 @@ export default function ProductsPage(): JSX.Element {
             src="/photos/Carousel3.WEBP"
             alt="Quality Hay"
             fill
-            className="object-cover"
+            sizes="100vw"
+            quality={80}
             priority
-            unoptimized
+            className="object-cover"
           />
         </div>
 
@@ -78,6 +79,9 @@ export default function ProductsPage(): JSX.Element {
                       src="/photos/1stCutFr.jpeg"
                       alt="1st Cut Hay"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      quality={80}
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute left-6 top-6">
@@ -216,6 +220,9 @@ export default function ProductsPage(): JSX.Element {
                       src="/photos/2ndCutFr.jpeg"
                       alt="2nd Cut Hay"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      quality={80}
+                      loading="lazy"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute right-6 top-6">

@@ -67,9 +67,11 @@ export default function HomePage(): JSX.Element {
               src={slide.src}
               alt={slide.alt}
               fill
+              sizes="100vw"
+              quality={80}
               className="object-cover"
               priority={index === 0}
-              unoptimized
+              loading={index === 0 ? 'eager' : 'lazy'}
             />
           </div>
         ))}
@@ -91,6 +93,9 @@ export default function HomePage(): JSX.Element {
                 src="/photos/LongBarnLogo.jpg"
                 alt="Long Barn Hay"
                 fill
+                sizes="96px"
+                quality={85}
+                priority
                 className="object-contain p-2"
               />
             </div>
@@ -207,8 +212,9 @@ export default function HomePage(): JSX.Element {
                   alt={img.alt}
                   fill
                   sizes="(max-width: 640px) 320px, 400px"
+                  quality={75}
+                  loading="lazy"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
                 />
               </div>
             ))}
@@ -350,6 +356,9 @@ export default function HomePage(): JSX.Element {
                   src="/photos/RoundBales.jpg"
                   alt="Hay bales at Long Barn"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -386,6 +395,9 @@ export default function HomePage(): JSX.Element {
                     src="/photos/1stCutFr.jpeg"
                     alt="1st Cut Hay"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
+                    loading="lazy"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute left-4 top-4">
@@ -436,6 +448,9 @@ export default function HomePage(): JSX.Element {
                     src="/photos/2ndCutFr.jpeg"
                     alt="2nd Cut Hay"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
+                    loading="lazy"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute left-4 top-4">

@@ -19,6 +19,9 @@ export function Footer(): JSX.Element {
                     src="/photos/LongBarnLogo.jpg"
                     alt="Long Barn Hay"
                     fill
+                    sizes="56px"
+                    quality={80}
+                    loading="lazy"
                     className="object-contain p-1"
                   />
                 </div>

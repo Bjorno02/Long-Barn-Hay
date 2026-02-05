@@ -84,6 +84,8 @@ export function Header(): JSX.Element {
                 src="/photos/LongBarnLogo.jpg"
                 alt=""
                 fill
+                sizes="48px"
+                quality={85}
                 className="object-contain p-1"
                 priority
               />
@@ -207,7 +209,14 @@ export function Header(): JSX.Element {
           <div className="mb-10 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-full bg-white">
-                <Image src="/photos/LongBarnLogo.jpg" alt="" fill className="object-contain p-1" />
+                <Image
+                  src="/photos/LongBarnLogo.jpg"
+                  alt=""
+                  fill
+                  sizes="40px"
+                  quality={80}
+                  className="object-contain p-1"
+                />
               </div>
               <span className="font-semibold text-white">Menu</span>
             </div>
