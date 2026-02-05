@@ -93,7 +93,7 @@ export function Header(): JSX.Element {
                 'text-lg font-semibold transition-colors duration-300',
                 isScrolled || !isHome
                   ? 'text-white group-hover:text-barn-400'
-                  : 'text-white group-hover:text-barn-200'
+                  : 'hidden text-white group-hover:text-barn-200 sm:inline'
               )}
             >
               {siteConfig.companyName}

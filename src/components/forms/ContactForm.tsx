@@ -22,23 +22,35 @@ export function ContactForm(): JSX.Element {
 
   if (state.success) {
     return (
-      <div className="chrome-card p-8 text-center">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 shadow-lg">
-          <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="chrome-card p-6 text-center sm:p-8">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 shadow-lg sm:mb-6 sm:h-16 sm:w-16">
+          <svg
+            className="h-7 w-7 text-white sm:h-8 sm:w-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="mb-3 text-2xl font-semibold text-steel-900">Message Sent</h3>
-        <p className="text-steel-600">{state.message}</p>
+        <h3 className="mb-2 text-xl font-semibold text-steel-900 sm:mb-3 sm:text-2xl">
+          Message Sent
+        </h3>
+        <p className="text-sm text-steel-600 sm:text-base">{state.message}</p>
       </div>
     );
   }
 
   return (
-    <div className="chrome-card p-6 lg:p-8">
-      <div className="mb-6 flex items-center gap-3">
-        <div className="chrome-red flex h-10 w-10 items-center justify-center rounded-lg">
-          <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="chrome-card p-5 sm:p-6 lg:p-8">
+      <div className="mb-4 flex items-center gap-3 sm:mb-6">
+        <div className="chrome-red flex h-9 w-9 items-center justify-center rounded-lg sm:h-10 sm:w-10">
+          <svg
+            className="h-4 w-4 text-white sm:h-5 sm:w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -48,14 +60,14 @@ export function ContactForm(): JSX.Element {
           </svg>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-steel-900">Send a Message</h3>
-          <p className="text-sm text-steel-500">We will get back to you shortly</p>
+          <h3 className="text-base font-semibold text-steel-900 sm:text-lg">Send a Message</h3>
+          <p className="text-xs text-steel-500 sm:text-sm">We will get back to you shortly</p>
         </div>
       </div>
 
-      <div className="chrome-divider mb-6" />
+      <div className="chrome-divider mb-4 sm:mb-6" />
 
-      <form action={formAction} className="space-y-4">
+      <form action={formAction} className="space-y-3 sm:space-y-4">
         {!state.success && state.message && <Alert variant="error">{state.message}</Alert>}
 
         {/* Honeypot field - hidden from users, catches bots */}
@@ -68,7 +80,7 @@ export function ContactForm(): JSX.Element {
           aria-hidden="true"
         />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           <Input name="name" label="Name" required error={state.errors?.name?.[0]} />
           <Input
             name="email"

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage(): JSX.Element {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-earth-300 py-16">
+    <section className="relative min-h-screen overflow-hidden bg-earth-300 py-8 sm:py-16">
       {/* Paper texture */}
       <div
         className="absolute inset-0 opacity-10"
@@ -23,30 +23,32 @@ export default function ContactPage(): JSX.Element {
       <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-copper-400/20 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-amber-400/20 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <div className="cream-pill mb-4 inline-flex items-center gap-2">
+        <div className="mb-8 text-center sm:mb-12">
+          <div className="cream-pill mb-3 inline-flex items-center gap-2 sm:mb-4">
             <span className="h-2 w-2 rounded-full bg-barn-500" />
             Get in Touch
           </div>
-          <h1 className="mb-4 text-4xl font-bold text-espresso-800 md:text-5xl">Contact Us</h1>
-          <p className="mx-auto max-w-xl text-lg text-espresso-600">
+          <h1 className="mb-3 text-3xl font-bold text-espresso-800 sm:mb-4 sm:text-4xl md:text-5xl">
+            Contact Us
+          </h1>
+          <p className="mx-auto max-w-xl text-base text-espresso-600 sm:text-lg">
             Questions or ready to order? We'd love to hear from you.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="rounded-3xl bg-cream-100/80 p-8 shadow-xl backdrop-blur-sm lg:p-12">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="rounded-2xl bg-cream-100/80 p-4 shadow-xl backdrop-blur-sm sm:rounded-3xl sm:p-8 lg:p-12">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12">
             {/* Info Column */}
-            <div className="space-y-6 lg:col-span-4">
+            <div className="order-2 grid grid-cols-2 gap-3 sm:grid-cols-1 sm:gap-4 lg:order-1 lg:col-span-4 lg:space-y-4">
               {/* Phone Card */}
-              <div className="rounded-2xl border border-earth-200/50 bg-white p-6 shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-barn-600">
+              <div className="rounded-xl border border-earth-200/50 bg-white p-4 shadow-lg sm:rounded-2xl sm:p-6">
+                <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-barn-600 sm:h-12 sm:w-12 sm:rounded-xl">
                     <svg
-                      className="h-6 w-6 text-white"
+                      className="h-5 w-5 text-white sm:h-6 sm:w-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -60,10 +62,12 @@ export default function ContactPage(): JSX.Element {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-1 font-semibold text-espresso-800">Call or Text</h3>
+                    <h3 className="text-sm font-semibold text-espresso-800 sm:mb-1 sm:text-base">
+                      Call or Text
+                    </h3>
                     <a
                       href="tel:603-556-8676"
-                      className="font-medium text-barn-600 transition-colors hover:text-barn-700"
+                      className="text-sm font-medium text-barn-600 transition-colors hover:text-barn-700 sm:text-base"
                     >
                       (603) 556-8676
                     </a>
@@ -72,11 +76,11 @@ export default function ContactPage(): JSX.Element {
               </div>
 
               {/* Location Card */}
-              <div className="rounded-2xl border border-earth-200/50 bg-white p-6 shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="earth-accent flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl">
+              <div className="rounded-xl border border-earth-200/50 bg-white p-4 shadow-lg sm:rounded-2xl sm:p-6">
+                <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left">
+                  <div className="earth-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12 sm:rounded-xl">
                     <svg
-                      className="h-6 w-6 text-white"
+                      className="h-5 w-5 text-white sm:h-6 sm:w-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -96,8 +100,10 @@ export default function ContactPage(): JSX.Element {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-1 font-semibold text-espresso-800">Location</h3>
-                    <address className="text-sm not-italic leading-relaxed text-espresso-600">
+                    <h3 className="text-sm font-semibold text-espresso-800 sm:mb-1 sm:text-base">
+                      Location
+                    </h3>
+                    <address className="text-xs not-italic leading-relaxed text-espresso-600 sm:text-sm">
                       {siteConfig.address.street}
                       <br />
                       {siteConfig.address.city}, {siteConfig.address.state}{' '}
@@ -108,11 +114,11 @@ export default function ContactPage(): JSX.Element {
               </div>
 
               {/* Facebook Card */}
-              <div className="rounded-2xl border border-earth-200/50 bg-white p-6 shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="amber-accent flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl">
+              <div className="rounded-xl border border-earth-200/50 bg-white p-4 shadow-lg sm:rounded-2xl sm:p-6">
+                <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left">
+                  <div className="amber-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12 sm:rounded-xl">
                     <svg
-                      className="h-6 w-6 text-espresso-900"
+                      className="h-5 w-5 text-espresso-900 sm:h-6 sm:w-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -120,12 +126,14 @@ export default function ContactPage(): JSX.Element {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-1 font-semibold text-espresso-800">Follow Us</h3>
+                    <h3 className="text-sm font-semibold text-espresso-800 sm:mb-1 sm:text-base">
+                      Follow Us
+                    </h3>
                     <a
                       href={siteConfig.facebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-espresso-600 transition-colors hover:text-barn-600"
+                      className="inline-flex items-center gap-1 text-xs text-espresso-600 transition-colors hover:text-barn-600 sm:text-sm"
                     >
                       Facebook
                       <svg
@@ -147,11 +155,11 @@ export default function ContactPage(): JSX.Element {
               </div>
 
               {/* Delivery Info Card */}
-              <div className="copper-accent rounded-2xl p-6 shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white/20">
+              <div className="copper-accent rounded-xl p-4 shadow-lg sm:rounded-2xl sm:p-6">
+                <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white/20 sm:h-12 sm:w-12 sm:rounded-xl">
                     <svg
-                      className="h-6 w-6 text-white"
+                      className="h-5 w-5 text-white sm:h-6 sm:w-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -165,8 +173,10 @@ export default function ContactPage(): JSX.Element {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="mb-1 font-semibold text-white">Delivery</h3>
-                    <p className="text-sm leading-relaxed text-white/90">
+                    <h3 className="text-sm font-semibold text-white sm:mb-1 sm:text-base">
+                      Delivery
+                    </h3>
+                    <p className="text-xs leading-relaxed text-white/90 sm:text-sm">
                       {siteConfig.deliveryLeadTimeDays} day lead time
                       <br />
                       Contact for availability
@@ -176,9 +186,11 @@ export default function ContactPage(): JSX.Element {
               </div>
 
               {/* Quick Info */}
-              <div className="rounded-2xl bg-espresso-800 p-6 shadow-lg">
-                <h3 className="mb-3 font-semibold text-cream-100">What We Offer</h3>
-                <ul className="space-y-2 text-sm text-cream-200">
+              <div className="col-span-2 rounded-xl bg-espresso-800 p-4 shadow-lg sm:col-span-1 sm:rounded-2xl sm:p-6">
+                <h3 className="mb-2 text-sm font-semibold text-cream-100 sm:mb-3 sm:text-base">
+                  What We Offer
+                </h3>
+                <ul className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs text-cream-200 sm:flex-col sm:space-y-2 sm:text-sm">
                   <li className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-copper-400" />
                     1st &amp; 2nd Cut Hay
@@ -200,7 +212,7 @@ export default function ContactPage(): JSX.Element {
             </div>
 
             {/* Form Column */}
-            <div className="lg:col-span-8">
+            <div className="order-1 lg:order-2 lg:col-span-8">
               <div className="relative">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-copper-400 via-amber-400 to-copper-500" />
                 <div className="relative">

@@ -54,7 +54,7 @@ export default function HomePage(): JSX.Element {
   return (
     <>
       {/* Hero Section - Full Screen with Carousel */}
-      <section className="relative h-screen min-h-[600px] overflow-hidden">
+      <section className="relative h-screen min-h-[500px] overflow-hidden md:min-h-[600px]">
         {/* Background Carousel */}
         {heroSlides.map((slide, index) => (
           <div
@@ -82,9 +82,9 @@ export default function HomePage(): JSX.Element {
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-copper-gradient" />
 
         {/* Content */}
-        <div className="relative flex h-full flex-col items-center justify-center px-6 pb-16 text-center">
+        <div className="relative flex h-full flex-col items-center justify-center px-4 pb-16 text-center sm:px-6">
           {/* Logo */}
-          <div className="relative mb-8 h-24 w-24">
+          <div className="relative mb-6 h-20 w-20 sm:mb-8 sm:h-24 sm:w-24">
             <div className="absolute -inset-1 animate-pulse rounded-full bg-chrome-gradient" />
             <div className="absolute inset-0 overflow-hidden rounded-full bg-white shadow-deep">
               <Image
@@ -97,17 +97,17 @@ export default function HomePage(): JSX.Element {
           </div>
 
           {/* Headline */}
-          <h1 className="mb-6 text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:mb-6 sm:text-5xl md:text-7xl lg:text-8xl">
             Long Barn Hay
           </h1>
 
           {/* Tagline */}
-          <p className="mb-4 max-w-2xl text-xl text-white/90 md:text-2xl">
+          <p className="mb-3 max-w-2xl text-lg text-white/90 sm:mb-4 sm:text-xl md:text-2xl">
             Premium 1st and 2nd cut hay from Chester, NH
           </p>
 
           {/* Sub info */}
-          <div className="mb-10 flex flex-wrap justify-center gap-4 text-white/70">
+          <div className="mb-8 flex flex-wrap justify-center gap-3 text-sm text-white/70 sm:mb-10 sm:gap-4 sm:text-base">
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-chrome-400" />
               {siteConfig.deliveryLeadTimeDays} Day Lead Time
@@ -119,16 +119,16 @@ export default function HomePage(): JSX.Element {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="flex w-full flex-col gap-3 px-4 sm:w-auto sm:flex-row sm:gap-4 sm:px-0">
             <Link
               href="/contact"
-              className="chrome-red rounded-full px-10 py-4 text-lg font-semibold transition-all hover:shadow-red-glow"
+              className="chrome-red rounded-full px-8 py-3.5 text-base font-semibold transition-all hover:shadow-red-glow sm:px-10 sm:py-4 sm:text-lg"
             >
               Contact Us
             </Link>
             <Link
               href="/products"
-              className="rounded-full border border-white/20 bg-white/10 px-10 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+              className="rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:px-10 sm:py-4 sm:text-lg"
             >
               View Products
             </Link>
@@ -152,18 +152,18 @@ export default function HomePage(): JSX.Element {
 
       {/* Gallery Strip - Infinite Scroll */}
       <section
-        className="relative overflow-hidden bg-steel-900 py-20"
+        className="relative overflow-hidden bg-steel-900 py-12 sm:py-20"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Gallery Controls */}
         <button
           onClick={() => scrollGallery('left')}
-          className="chrome-surface absolute left-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full shadow-deep transition-transform hover:scale-110"
+          className="chrome-surface absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full shadow-deep transition-transform hover:scale-110 sm:left-4 sm:h-14 sm:w-14"
           aria-label="Scroll left"
         >
           <svg
-            className="h-6 w-6 text-steel-700"
+            className="h-5 w-5 text-steel-700 sm:h-6 sm:w-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -179,11 +179,11 @@ export default function HomePage(): JSX.Element {
 
         <button
           onClick={() => scrollGallery('right')}
-          className="chrome-surface absolute right-4 top-1/2 z-20 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full shadow-deep transition-transform hover:scale-110"
+          className="chrome-surface absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full shadow-deep transition-transform hover:scale-110 sm:right-4 sm:h-14 sm:w-14"
           aria-label="Scroll right"
         >
           <svg
-            className="h-6 w-6 text-steel-700"
+            className="h-5 w-5 text-steel-700 sm:h-6 sm:w-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -194,18 +194,19 @@ export default function HomePage(): JSX.Element {
 
         <div className="overflow-hidden">
           <div
-            className="flex gap-6"
+            className="flex gap-4 sm:gap-6"
             style={{ transform: `translateX(-${galleryOffset % (galleryImages.length * 420)}px)` }}
           >
             {[...galleryImages, ...galleryImages, ...galleryImages].map((img, index) => (
               <div
                 key={index}
-                className="group relative aspect-[3/2] w-[400px] flex-shrink-0 overflow-hidden rounded-2xl"
+                className="group relative aspect-[3/2] w-[320px] flex-shrink-0 overflow-hidden rounded-xl sm:w-[400px] sm:rounded-2xl"
               >
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
+                  sizes="(max-width: 640px) 320px, 400px"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   unoptimized
                 />
@@ -216,7 +217,10 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* About / Intro Section */}
-      <section className="relative overflow-hidden py-24" style={{ backgroundColor: '#fff6ef' }}>
+      <section
+        className="relative overflow-hidden py-16 sm:py-24"
+        style={{ backgroundColor: '#fff6ef' }}
+      >
         {/* Paper texture */}
         <div
           className="absolute inset-0 opacity-15"
@@ -226,32 +230,32 @@ export default function HomePage(): JSX.Element {
           `,
           }}
         />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 items-center gap-10 sm:gap-16 lg:grid-cols-2">
             {/* Text Content */}
             <div>
-              <div className="cream-pill mb-6 inline-flex items-center gap-2">
+              <div className="cream-pill mb-4 inline-flex items-center gap-2 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-amber-500" />
                 Full-Service Hay
               </div>
 
-              <h2 className="mb-6 text-4xl font-bold leading-tight text-espresso-800 lg:text-5xl">
+              <h2 className="mb-4 text-3xl font-bold leading-tight text-espresso-800 sm:mb-6 sm:text-4xl lg:text-5xl">
                 Your First
                 <br />
                 <span className="text-barn-600">Full-Service Hay Specialists</span>
               </h2>
 
-              <p className="mb-4 text-lg leading-relaxed text-earth-600">
+              <p className="mb-3 text-base leading-relaxed text-earth-600 sm:mb-4 sm:text-lg">
                 Come pick up on site or enjoy our special hands-free services. Place your order and
                 that's it! We deliver, unload, and stack the hay for you.
               </p>
-              <p className="mb-8 text-lg leading-relaxed text-earth-600">
+              <p className="mb-6 text-base leading-relaxed text-earth-600 sm:mb-8 sm:text-lg">
                 Whether it's ground level or in a loft, we've got you covered.
               </p>
 
-              <div className="mb-8 space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="earth-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+              <div className="mb-6 space-y-3 sm:mb-8 sm:space-y-4">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="earth-accent flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10">
                     <svg
                       className="h-5 w-5 text-white"
                       fill="none"
@@ -273,8 +277,8 @@ export default function HomePage(): JSX.Element {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="copper-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="copper-accent flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10">
                     <svg
                       className="h-5 w-5 text-white"
                       fill="none"
@@ -296,8 +300,8 @@ export default function HomePage(): JSX.Element {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="amber-accent flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="amber-accent flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10">
                     <svg
                       className="h-5 w-5 text-amber-900"
                       fill="none"
@@ -338,10 +342,10 @@ export default function HomePage(): JSX.Element {
             </div>
 
             {/* Image */}
-            <div className="relative">
-              <div className="absolute -inset-4 -rotate-3 rounded-2xl bg-copper-500" />
-              <div className="absolute -inset-4 rotate-2 rounded-2xl bg-cream-300" />
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-deep">
+            <div className="relative mx-4 sm:mx-0">
+              <div className="absolute -inset-2 -rotate-3 rounded-xl bg-copper-500 sm:-inset-4 sm:rounded-2xl" />
+              <div className="absolute -inset-2 rotate-2 rounded-xl bg-cream-300 sm:-inset-4 sm:rounded-2xl" />
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-deep sm:rounded-2xl">
                 <Image
                   src="/photos/RoundBales.jpg"
                   alt="Hay bales at Long Barn"
@@ -355,27 +359,29 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* Feature Cards - Hay Cuts */}
-      <section className="relative bg-steel-900 py-24">
+      <section className="relative bg-steel-900 py-16 sm:py-24">
         <div className="absolute left-0 right-0 top-0 h-1 bg-chrome-gradient" />
 
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mb-10 text-center sm:mb-16">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/80 sm:mb-6">
               <span className="h-2 w-2 rounded-full bg-barn-500" />
               Our Products
             </div>
-            <h2 className="mb-4 text-4xl font-bold text-white lg:text-5xl">1st Cut vs 2nd Cut</h2>
+            <h2 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl lg:text-5xl">
+              1st Cut vs 2nd Cut
+            </h2>
             <p className="mx-auto max-w-2xl text-steel-400">
               Understanding the difference helps you choose the right hay for your animals
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
             {/* 1st Cut Card */}
             <div className="group relative">
-              <div className="absolute -inset-px rounded-2xl bg-chrome-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative overflow-hidden rounded-2xl bg-steel-800">
-                <div className="relative aspect-[16/9]">
+              <div className="absolute -inset-px rounded-xl bg-chrome-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-2xl" />
+              <div className="relative overflow-hidden rounded-xl bg-steel-800 sm:rounded-2xl">
+                <div className="relative aspect-[16/10] sm:aspect-[16/9]">
                   <Image
                     src="/photos/1stCutFr.jpeg"
                     alt="1st Cut Hay"
@@ -388,10 +394,14 @@ export default function HomePage(): JSX.Element {
                     </span>
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="mb-3 text-2xl font-bold text-white">1st Cut Hay</h3>
-                  <p className="mb-6 text-steel-400">{siteConfig.hayCuts[0]?.description}</p>
-                  <ul className="mb-6 space-y-2">
+                <div className="p-5 sm:p-8">
+                  <h3 className="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
+                    1st Cut Hay
+                  </h3>
+                  <p className="mb-4 text-sm text-steel-400 sm:mb-6 sm:text-base">
+                    {siteConfig.hayCuts[0]?.description}
+                  </p>
+                  <ul className="mb-4 space-y-2 sm:mb-6">
                     {siteConfig.hayCuts[0]?.characteristics.slice(0, 3).map((c, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-steel-300">
                         <span className="h-1.5 w-1.5 rounded-full bg-chrome-400" />
@@ -419,9 +429,9 @@ export default function HomePage(): JSX.Element {
 
             {/* 2nd Cut Card */}
             <div className="group relative">
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-barn-400 to-barn-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative overflow-hidden rounded-2xl bg-barn-600">
-                <div className="relative aspect-[16/9]">
+              <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-barn-400 to-barn-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-2xl" />
+              <div className="relative overflow-hidden rounded-xl bg-barn-600 sm:rounded-2xl">
+                <div className="relative aspect-[16/10] sm:aspect-[16/9]">
                   <Image
                     src="/photos/2ndCutFr.jpeg"
                     alt="2nd Cut Hay"
@@ -434,10 +444,14 @@ export default function HomePage(): JSX.Element {
                     </span>
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="mb-3 text-2xl font-bold text-white">2nd Cut Hay</h3>
-                  <p className="mb-6 text-barn-100">{siteConfig.hayCuts[1]?.description}</p>
-                  <ul className="mb-6 space-y-2">
+                <div className="p-5 sm:p-8">
+                  <h3 className="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
+                    2nd Cut Hay
+                  </h3>
+                  <p className="mb-4 text-sm text-barn-100 sm:mb-6 sm:text-base">
+                    {siteConfig.hayCuts[1]?.description}
+                  </p>
+                  <ul className="mb-4 space-y-2 sm:mb-6">
                     {siteConfig.hayCuts[1]?.characteristics.slice(0, 3).map((c, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-barn-100">
                         <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
@@ -467,17 +481,19 @@ export default function HomePage(): JSX.Element {
       </section>
 
       {/* CTA Section */}
-      <section className="earth-surface-warm relative py-24">
+      <section className="earth-surface-warm relative py-16 sm:py-24">
         <div className="earth-divider absolute left-0 right-0 top-0" />
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="mb-6 text-4xl font-bold text-espresso-800 lg:text-5xl">Ready to Order?</h2>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-espresso-600">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <h2 className="mb-4 text-3xl font-bold text-espresso-800 sm:mb-6 sm:text-4xl lg:text-5xl">
+            Ready to Order?
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-base text-espresso-600 sm:mb-10 sm:text-lg">
             {siteConfig.disclaimers.pricing} Get in touch for a personalized quote.
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
             <Link
               href="/contact"
-              className="chrome-red inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 text-lg font-semibold transition-all hover:shadow-red-glow"
+              className="chrome-red inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold transition-all hover:shadow-red-glow sm:px-10 sm:py-4 sm:text-lg"
             >
               Contact Us
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -491,7 +507,7 @@ export default function HomePage(): JSX.Element {
             </Link>
             <Link
               href="/products"
-              className="chrome-button inline-flex items-center justify-center rounded-full px-10 py-4 text-lg font-semibold"
+              className="chrome-button inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold sm:px-10 sm:py-4 sm:text-lg"
             >
               View Products
             </Link>
@@ -501,9 +517,9 @@ export default function HomePage(): JSX.Element {
 
       {/* Service Info Strip */}
       <section className="relative">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="p-10 text-center" style={{ backgroundColor: '#664930' }}>
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white/15">
+        <div className="grid grid-cols-2 md:grid-cols-2">
+          <div className="p-6 text-center sm:p-10" style={{ backgroundColor: '#664930' }}>
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 sm:mb-4 sm:h-14 sm:w-14">
               <svg
                 className="h-7 w-7 text-cream-100"
                 fill="none"
@@ -518,13 +534,13 @@ export default function HomePage(): JSX.Element {
                 />
               </svg>
             </div>
-            <h3 className="mb-1 text-lg font-bold text-cream-100">
+            <h3 className="mb-1 text-sm font-bold text-cream-100 sm:text-lg">
               {siteConfig.deliveryLeadTimeDays} Day Lead Time
             </h3>
-            <p className="text-sm text-cream-200/80">Typical delivery turnaround</p>
+            <p className="text-xs text-cream-200/80 sm:text-sm">Typical delivery turnaround</p>
           </div>
-          <div className="copper-accent p-10 text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
+          <div className="copper-accent p-6 text-center sm:p-10">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 sm:mb-4 sm:h-14 sm:w-14">
               <svg
                 className="h-7 w-7 text-white"
                 fill="none"
@@ -539,8 +555,8 @@ export default function HomePage(): JSX.Element {
                 />
               </svg>
             </div>
-            <h3 className="mb-1 text-lg font-bold text-white">Pickup Available</h3>
-            <p className="text-sm text-white/80">At our Chester, NH location</p>
+            <h3 className="mb-1 text-sm font-bold text-white sm:text-lg">Pickup Available</h3>
+            <p className="text-xs text-white/80 sm:text-sm">At our Chester, NH location</p>
           </div>
         </div>
       </section>
