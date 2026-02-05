@@ -7,6 +7,9 @@ import { siteConfig } from '@/lib/siteConfig';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Use override for testing (when domain isn't verified yet), otherwise use config
+const getRecipientEmail = () => process.env.CONTACT_EMAIL_OVERRIDE || siteConfig.contactEmail;
+
 async function sendEmail(
   to: string,
   subject: string,
@@ -22,7 +25,7 @@ async function sendEmail(
 
   try {
     const { error } = await resend.emails.send({
-      from: 'Long Barn Hay <onboarding@resend.dev>',
+      from: process.env.RESEND_FROM_EMAIL || 'Long Barn Hay <onboarding@resend.dev>',
       to: [to],
       subject: subject,
       text: body,
@@ -89,7 +92,7 @@ ${data.message}
 Sent from Long Barn Hay website
   `.trim();
 
-  const emailResult = await sendEmail(siteConfig.contactEmail, emailSubject, emailBody);
+  const emailResult = await sendEmail(getRecipientEmail(), emailSubject, emailBody);
 
   if (!emailResult.success) {
     return {
@@ -148,7 +151,7 @@ ${data.phone ? `Phone: ${data.phone}` : ''}
 Sent from Long Barn Hay website
   `.trim();
 
-  const emailResult = await sendEmail(siteConfig.contactEmail, emailSubject, emailBody);
+  const emailResult = await sendEmail(getRecipientEmail(), emailSubject, emailBody);
 
   if (!emailResult.success) {
     return {
