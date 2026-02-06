@@ -8,7 +8,7 @@ import { siteConfig } from '@/lib/siteConfig';
 const heroSlides = [
   { src: '/photos/Hero1LBH.jpg', alt: '1st Cut Hay Field' },
   { src: '/photos/Hero2LBH.jpeg', alt: '2nd Cut Hay' },
-  { src: '/photos/Hero3LBH.jpeg', alt: 'Round Hay Bales' },
+  { src: '/photos/Hero3.jpeg', alt: 'Round Hay Bales' },
 ];
 
 const galleryImages = [
@@ -489,6 +489,59 @@ export default function HomePage(): JSX.Element {
                     </svg>
                   </Link>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Showcase */}
+      <section className="earth-surface-warm relative py-14 sm:py-20">
+        <div className="earth-divider absolute left-0 right-0 top-0" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col gap-3 sm:gap-4 md:grid md:grid-cols-4 md:grid-rows-2">
+            {/* Large featured image - barn interior */}
+            <div className="group relative md:col-span-2 md:row-span-2">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-deep sm:rounded-2xl md:absolute md:inset-0 md:aspect-auto">
+                <Image
+                  src="/photos/Hero3LBH.jpeg"
+                  alt="Hay stacked in Long Barn"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+            </div>
+
+            {/* Loaded truck */}
+            <div className="group relative md:col-span-2">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-xl shadow-deep sm:rounded-2xl">
+                <Image
+                  src="/photos/HayPhoto1.jpeg"
+                  alt="Hay bales loaded for delivery"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+            </div>
+
+            {/* Worker stacking */}
+            <div className="group relative md:col-span-2">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-xl shadow-deep sm:rounded-2xl">
+                <Image
+                  src="/photos/HayPhoto2.jpeg"
+                  alt="Delivering and stacking hay"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
               </div>
             </div>
           </div>
