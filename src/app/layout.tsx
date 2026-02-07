@@ -48,6 +48,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export const viewport: Viewport = {
@@ -65,6 +68,7 @@ const jsonLd = {
   url: siteConfig.siteUrl,
   telephone: siteConfig.phone,
   email: siteConfig.contactEmail,
+  image: `${siteConfig.siteUrl}/photos/LongBarnLogo.jpg`,
   address: {
     '@type': 'PostalAddress',
     streetAddress: siteConfig.address.street,
@@ -77,6 +81,11 @@ const jsonLd = {
     '@type': 'GeoCoordinates',
     latitude: siteConfig.coordinates.lat,
     longitude: siteConfig.coordinates.lng,
+  },
+  hasMap: `https://www.google.com/maps?q=${siteConfig.coordinates.lat},${siteConfig.coordinates.lng}`,
+  areaServed: {
+    '@type': 'State',
+    name: 'New Hampshire',
   },
   sameAs: [siteConfig.facebookUrl],
   priceRange: '$$',

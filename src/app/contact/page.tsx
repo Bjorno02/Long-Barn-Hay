@@ -4,6 +4,11 @@ import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Contact',
+  description:
+    'Contact Long Barn Hay for pricing, delivery, and pickup inquiries. Located at 154 Towle Road, Chester, NH 03036.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage(): JSX.Element {

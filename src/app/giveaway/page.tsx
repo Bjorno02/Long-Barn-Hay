@@ -5,6 +5,9 @@ import { siteConfig } from '@/lib/siteConfig';
 export const metadata: Metadata = {
   title: 'Giveaway',
   description: 'Enter our hay giveaway for a chance to win free hay from Long Barn Hay.',
+  alternates: {
+    canonical: '/giveaway',
+  },
 };
 
 export default function GiveawayPage(): JSX.Element {

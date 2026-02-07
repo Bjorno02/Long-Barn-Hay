@@ -5,6 +5,11 @@ import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Products',
+  description:
+    'Browse our hay products — 1st and 2nd cut hay available in small square, large round, and large square bales. Pickup or delivery in southern NH.',
+  alternates: {
+    canonical: '/products',
+  },
 };
 
 export default function ProductsPage(): JSX.Element {
