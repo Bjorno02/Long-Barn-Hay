@@ -7,17 +7,19 @@ export const siteConfig: SiteConfig = {
   phone: '603-556-8676',
 
   address: {
-    street: '154 Towle Road',
-    city: 'Chester',
+    street: '60 Epping Street',
+    city: 'Raymond',
     state: 'NH',
     country: 'United States',
-    zipCode: '03036',
-    fullAddress: '154 Towle Road, Chester, NH 03036, United States',
+    zipCode: '03077',
+    fullAddress: '60 Epping Street, Raymond, NH 03077, United States',
   },
 
+  previousAddress: '154 Towle Road, Chester, NH',
+
   coordinates: {
-    lat: 42.9667,
-    lng: -71.25,
+    lat: 43.0365,
+    lng: -71.177,
   },
 
   facebookUrl: 'https://www.facebook.com/profile.php?id=61574773954576',
@@ -79,6 +81,21 @@ export const siteConfig: SiteConfig = {
       ],
     },
   ],
+
+  alfalfa: {
+    name: 'Alfalfa',
+    description:
+      'Premium forage packed with protein and energy. A favorite for performance horses and hard keepers.',
+    fullDescription:
+      'Alfalfa is a premium forage that provides horses with high-quality protein, energy, and essential nutrients to support muscle development, weight maintenance, and overall health. It’s especially beneficial for growing, performance, and hard-keeping horses.',
+    characteristics: [
+      'High-quality protein and energy',
+      'Supports muscle development',
+      'Great for weight maintenance',
+      'Ideal for growing and performance horses',
+      'Perfect for hard keepers',
+    ],
+  },
 
   disclaimers: {
     pricing: 'Pricing varies by quantity and fulfillment method. Contact us for current pricing.',

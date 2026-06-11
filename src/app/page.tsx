@@ -108,7 +108,7 @@ export default function HomePage(): JSX.Element {
 
           {/* Tagline */}
           <p className="mb-3 max-w-2xl text-lg text-white/90 sm:mb-4 sm:text-xl md:text-2xl">
-            Premium 1st and 2nd cut hay from Chester, NH
+            Premium 1st and 2nd cut hay from Raymond, NH
           </p>
 
           {/* Sub info */}
@@ -279,7 +279,7 @@ export default function HomePage(): JSX.Element {
                   <div>
                     <h3 className="font-semibold text-espresso-800">On-Site Pickup</h3>
                     <p className="text-sm text-espresso-600">
-                      Come grab your hay directly from our Chester, NH location
+                      Come grab your hay directly from our Raymond, NH location
                     </p>
                   </div>
                 </div>
@@ -378,18 +378,19 @@ export default function HomePage(): JSX.Element {
               Our Products
             </div>
             <h2 className="mb-3 text-3xl font-bold text-white sm:mb-4 sm:text-4xl lg:text-5xl">
-              1st Cut vs 2nd Cut
+              Know Your Hay
             </h2>
             <p className="mx-auto max-w-2xl text-steel-400">
-              Understanding the difference helps you choose the right hay for your animals
+              From 1st and 2nd cut to premium alfalfa, knowing the difference helps you choose the
+              right hay for your animals
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* 1st Cut Card */}
             <div className="group relative">
               <div className="absolute -inset-px rounded-xl bg-chrome-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-2xl" />
-              <div className="relative overflow-hidden rounded-xl bg-steel-800 sm:rounded-2xl">
+              <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-steel-800 sm:rounded-2xl">
                 <div className="relative aspect-[16/10] sm:aspect-[16/9]">
                   <Image
                     src="/photos/1stCutFr.jpeg"
@@ -406,11 +407,11 @@ export default function HomePage(): JSX.Element {
                     </span>
                   </div>
                 </div>
-                <div className="p-5 sm:p-8">
+                <div className="flex flex-1 flex-col p-5 sm:p-8">
                   <h3 className="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
                     1st Cut Hay
                   </h3>
-                  <p className="mb-4 text-sm text-steel-400 sm:mb-6 sm:text-base">
+                  <p className="mb-4 flex-1 text-sm text-steel-400 sm:mb-6 sm:text-base">
                     {siteConfig.hayCuts[0]?.description}
                   </p>
                   <ul className="mb-4 space-y-2 sm:mb-6">
@@ -423,7 +424,61 @@ export default function HomePage(): JSX.Element {
                   </ul>
                   <Link
                     href="/products"
-                    className="chrome-button inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium"
+                    className="chrome-button mt-auto inline-flex items-center gap-2 self-start rounded-lg px-5 py-2.5 text-sm font-medium"
+                  >
+                    Learn More
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Alfalfa Card */}
+            <div className="group relative">
+              <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-amber-400 to-copper-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-2xl" />
+              <div className="earth-surface-dark relative flex h-full flex-col overflow-hidden rounded-xl sm:rounded-2xl">
+                <div className="relative aspect-[16/10] sm:aspect-[16/9]">
+                  <Image
+                    src="/photos/Alfalfa.jpg"
+                    alt="Premium Alfalfa Bales"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={75}
+                    loading="lazy"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute left-4 top-4">
+                    <span className="amber-accent inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold">
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-espresso-900" />
+                      New
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-8">
+                  <h3 className="mb-2 text-xl font-bold text-cream-100 sm:mb-3 sm:text-2xl">
+                    {siteConfig.alfalfa.name}
+                  </h3>
+                  <p className="mb-4 flex-1 text-sm text-cream-200 sm:mb-6 sm:text-base">
+                    {siteConfig.alfalfa.description}
+                  </p>
+                  <ul className="mb-4 space-y-2 sm:mb-6">
+                    {siteConfig.alfalfa.characteristics.slice(0, 3).map((c, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-cream-200">
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="/products#alfalfa"
+                    className="chrome-button mt-auto inline-flex items-center gap-2 self-start rounded-lg px-5 py-2.5 text-sm font-medium"
                   >
                     Learn More
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -440,9 +495,9 @@ export default function HomePage(): JSX.Element {
             </div>
 
             {/* 2nd Cut Card */}
-            <div className="group relative">
+            <div className="group relative md:col-span-2 lg:col-span-1">
               <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-barn-400 to-barn-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-2xl" />
-              <div className="relative overflow-hidden rounded-xl bg-barn-600 sm:rounded-2xl">
+              <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-barn-600 sm:rounded-2xl">
                 <div className="relative aspect-[16/10] sm:aspect-[16/9]">
                   <Image
                     src="/photos/2ndCutFr.jpeg"
@@ -459,11 +514,11 @@ export default function HomePage(): JSX.Element {
                     </span>
                   </div>
                 </div>
-                <div className="p-5 sm:p-8">
+                <div className="flex flex-1 flex-col p-5 sm:p-8">
                   <h3 className="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
                     2nd Cut Hay
                   </h3>
-                  <p className="mb-4 text-sm text-barn-100 sm:mb-6 sm:text-base">
+                  <p className="mb-4 flex-1 text-sm text-barn-100 sm:mb-6 sm:text-base">
                     {siteConfig.hayCuts[1]?.description}
                   </p>
                   <ul className="mb-4 space-y-2 sm:mb-6">
@@ -476,7 +531,7 @@ export default function HomePage(): JSX.Element {
                   </ul>
                   <Link
                     href="/products"
-                    className="chrome-button inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium"
+                    className="chrome-button mt-auto inline-flex items-center gap-2 self-start rounded-lg px-5 py-2.5 text-sm font-medium"
                   >
                     Learn More
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -624,7 +679,7 @@ export default function HomePage(): JSX.Element {
               </svg>
             </div>
             <h3 className="mb-1 text-sm font-bold text-white sm:text-lg">Pickup Available</h3>
-            <p className="text-xs text-white/80 sm:text-sm">At our Chester, NH location</p>
+            <p className="text-xs text-white/80 sm:text-sm">At our Raymond, NH location</p>
           </div>
         </div>
       </section>

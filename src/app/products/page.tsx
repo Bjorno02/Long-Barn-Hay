@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/siteConfig';
 export const metadata: Metadata = {
   title: 'Products',
   description:
-    'Browse our hay products — 1st and 2nd cut hay available in small square, large round, and large square bales. Pickup or delivery in southern NH.',
+    'Browse our hay products — 1st and 2nd cut hay and premium alfalfa, available in small square, large round, and large square bales. Pickup or delivery in southern NH.',
   alternates: {
     canonical: '/products',
   },
@@ -46,7 +46,7 @@ export default function ProductsPage(): JSX.Element {
             Our Products
           </h1>
           <p className="mx-auto max-w-2xl text-base text-barn-700 sm:text-xl sm:text-barn-600">
-            Quality 1st and 2nd cut hay available in multiple bale formats.{' '}
+            Quality 1st and 2nd cut hay and premium alfalfa, available in multiple bale formats.{' '}
             {siteConfig.disclaimers.pricing}
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function ProductsPage(): JSX.Element {
             </div>
 
             {/* 2nd Cut - Full Width Card (reversed) */}
-            <div>
+            <div className="mb-8 sm:mb-12">
               <div className="group relative overflow-hidden rounded-2xl shadow-deep sm:rounded-3xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Content Side */}
@@ -235,6 +235,90 @@ export default function ProductsPage(): JSX.Element {
                         Second Harvest
                       </span>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Alfalfa - Full Width Card (NEW) */}
+            <div id="alfalfa" className="scroll-mt-24">
+              <div className="group relative overflow-hidden rounded-2xl shadow-deep sm:rounded-3xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  {/* Image Side */}
+                  <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[500px]">
+                    <Image
+                      src="/photos/Alfalfa.jpg"
+                      alt="Premium Alfalfa Bales"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      quality={80}
+                      loading="lazy"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute left-6 top-6">
+                      <span className="amber-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                        <span className="h-2 w-2 animate-pulse rounded-full bg-espresso-900" />
+                        New
+                      </span>
+                    </div>
+                  </div>
+                  {/* Content Side */}
+                  <div className="earth-surface-dark flex flex-col justify-center p-6 sm:p-10 lg:p-12">
+                    <h3 className="mb-3 text-2xl font-bold text-cream-100 sm:mb-4 sm:text-3xl">
+                      {siteConfig.alfalfa.name}
+                    </h3>
+                    <p className="mb-6 text-sm leading-relaxed text-cream-200 sm:mb-8 sm:text-base">
+                      {siteConfig.alfalfa.fullDescription}
+                    </p>
+
+                    <h4 className="mb-3 text-sm font-semibold text-cream-100 sm:mb-4 sm:text-base">
+                      Best For
+                    </h4>
+                    <ul className="mb-6 space-y-2 sm:mb-8 sm:space-y-3">
+                      {siteConfig.alfalfa.characteristics.map((c, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-sm text-cream-200 sm:gap-3 sm:text-base"
+                        >
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-500/20 sm:h-6 sm:w-6">
+                            <svg
+                              className="h-3.5 w-3.5 text-amber-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                          </span>
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                      href="/contact"
+                      className="amber-accent inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-90 sm:px-8 sm:py-4 sm:text-base"
+                    >
+                      Contact Us
+                      <svg
+                        className="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -55,18 +55,27 @@ export interface NavItem {
   href: string;
 }
 
+export interface AlfalfaInfo {
+  name: string;
+  description: string;
+  fullDescription: string;
+  characteristics: string[];
+}
+
 export interface SiteConfig {
   companyName: string;
   tagline: string;
   siteUrl: string;
   phone: string;
   address: Address;
+  previousAddress: string;
   coordinates: Coordinates;
   facebookUrl: string;
   contactEmail: string;
   deliveryLeadTimeDays: string;
   products: Product[];
   hayCuts: HayCutInfo[];
+  alfalfa: AlfalfaInfo;
   disclaimers: {
     pricing: string;
     delivery: string;

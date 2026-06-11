@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://longbarnhay.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/products', '/giveaway', '/contact'];
+  const routes = ['', '/products', '/giveaway', '/contact', '/privacy', '/terms'];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
