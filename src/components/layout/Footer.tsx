@@ -30,7 +30,7 @@ export function Footer(): JSX.Element {
                 </span>
               </Link>
               <p className="mb-4 max-w-sm text-sm text-steel-400 sm:mb-6 sm:text-base">
-                Quality 1st and 2nd cut hay from Raymond, NH. Delivery and pickup available.
+                Quality 1st and 2nd cut hay from Chester, NH. Delivery and pickup available.
               </p>
               <address className="mb-3 text-xs not-italic text-steel-500 sm:mb-4 sm:text-sm">
                 {siteConfig.address.street}
@@ -162,7 +162,7 @@ export function Footer(): JSX.Element {
               </div>
               <div className="flex items-center gap-2 text-xs text-steel-600">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                <span>Raymond, NH</span>
+                <span>Chester, NH</span>
               </div>
             </div>
           </div>

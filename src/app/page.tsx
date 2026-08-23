@@ -108,7 +108,7 @@ export default function HomePage(): JSX.Element {
 
           {/* Tagline */}
           <p className="mb-3 max-w-2xl text-lg text-white/90 sm:mb-4 sm:text-xl md:text-2xl">
-            Premium 1st and 2nd cut hay from Raymond, NH
+            Premium 1st and 2nd cut hay from Chester, NH
           </p>
 
           {/* Sub info */}
@@ -279,7 +279,7 @@ export default function HomePage(): JSX.Element {
                   <div>
                     <h3 className="font-semibold text-espresso-800">On-Site Pickup</h3>
                     <p className="text-sm text-espresso-600">
-                      Come grab your hay directly from our Raymond, NH location
+                      Come grab your hay directly from our Chester, NH location
                     </p>
                   </div>
                 </div>
@@ -679,7 +679,7 @@ export default function HomePage(): JSX.Element {
               </svg>
             </div>
             <h3 className="mb-1 text-sm font-bold text-white sm:text-lg">Pickup Available</h3>
-            <p className="text-xs text-white/80 sm:text-sm">At our Raymond, NH location</p>
+            <p className="text-xs text-white/80 sm:text-sm">At our Chester, NH location</p>
           </div>
         </div>
       </section>

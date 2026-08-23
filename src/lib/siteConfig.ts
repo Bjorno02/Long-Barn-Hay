@@ -7,19 +7,19 @@ export const siteConfig: SiteConfig = {
   phone: '603-556-8676',
 
   address: {
-    street: '60 Epping Street',
-    city: 'Raymond',
+    street: '154 Towle Road',
+    city: 'Chester',
     state: 'NH',
     country: 'United States',
-    zipCode: '03077',
-    fullAddress: '60 Epping Street, Raymond, NH 03077, United States',
+    zipCode: '03036',
+    fullAddress: '154 Towle Road, Chester, NH 03036, United States',
   },
 
-  previousAddress: '154 Towle Road, Chester, NH',
+  previousAddress: '60 Epping Street, Raymond, NH',
 
   coordinates: {
-    lat: 43.0365,
-    lng: -71.177,
+    lat: 42.9712,
+    lng: -71.2127,
   },
 
   facebookUrl: 'https://www.facebook.com/profile.php?id=61574773954576',

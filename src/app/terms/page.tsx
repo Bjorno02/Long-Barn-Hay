@@ -36,7 +36,7 @@ export default function TermsPage(): JSX.Element {
           <Link href="/privacy" className="underline">
             Privacy Policy
           </Link>
-          . The Site is operated by Long Barn Hay, Raymond, New Hampshire.
+          . The Site is operated by Long Barn Hay, Chester, New Hampshire.
         </P>
 
         <H2>2. What the Site Is</H2>

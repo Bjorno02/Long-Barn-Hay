@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteConfig.companyName,
     description:
-      'Full-service hay supplier in Raymond, NH. Quality 1st and 2nd cut hay with delivery, unloading, and stacking services.',
+      'Full-service hay supplier in Chester, NH. Quality 1st and 2nd cut hay with delivery, unloading, and stacking services.',
     url: siteConfig.siteUrl,
     siteName: siteConfig.companyName,
     locale: 'en_US',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.companyName,
-    description: 'Full-service hay supplier in Raymond, NH. Quality 1st and 2nd cut hay.',
+    description: 'Full-service hay supplier in Chester, NH. Quality 1st and 2nd cut hay.',
     images: ['/photos/LongBarnLogo.jpg'],
   },
   robots: {

@@ -32,7 +32,7 @@ export default function PrivacyPage(): JSX.Element {
         </p>
 
         <P>
-          Long Barn Hay is a hay supplier in Raymond, New Hampshire. Our website collects very
+          Long Barn Hay is a hay supplier in Chester, New Hampshire. Our website collects very
           little, and here is all of it.
         </P>
 

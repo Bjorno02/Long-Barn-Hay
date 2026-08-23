@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/lib/siteConfig';
 
-const STORAGE_KEY = 'lbh-relocation-announcement-v1';
+const STORAGE_KEY = 'lbh-relocation-announcement-v2';
 
 export function RelocationAnnouncement(): JSX.Element | null {
   const [open, setOpen] = useState(false);
@@ -125,7 +125,7 @@ export function RelocationAnnouncement(): JSX.Element | null {
         {/* Body */}
         <div className="earth-surface-warm px-6 py-6 text-center sm:px-8">
           <p className="mb-5 text-sm text-espresso-700 sm:text-base">
-            We&apos;ve moved to a new spot in Raymond. Same hay, same delivery and pickup services,
+            We&apos;ve moved to a new spot in Chester. Same hay, same delivery and pickup services,
             same friendly faces. Come see us at the new place!
           </p>
 
